@@ -34,7 +34,7 @@
                             <div class="innter-form">
                                 <form class="sa-innate-form" method="post">
                                     <label>Email Address</label>
-                                    <input type="text" name="username">
+                                    <input type="text" name="username" id="username">
                                     <label>Password</label>
                                     <input type="password" name="password">
                                     <a href="" id="password-forgot">Forgot Password?</a>
@@ -44,9 +44,9 @@
                             <div class="social-login">
                                 <p class="text-center">Sign In with</p>
                                 <ul>
-                                    <li><a href=""><i class="fa fa-facebook"></i> Facebook</a></li>
-                                    <li><a href=""><i class="fa fa-google-plus"></i> Google+</a></li>
-                                    <li><a href=""><i class="fa fa-twitter"></i> Twitter</a></li>
+                                    <li><a href="" id="facebook"><i class="fa fa-facebook"></i> Facebook</a></li>
+                                    <li><a href="" id="google"><i class="fa fa-google-plus"></i> Google+</a></li>
+                                    <li><a href="" id="twitter"><i class="fa fa-twitter"></i> Twitter</a></li>
                                 </ul>
                             </div>
                             <div class="clearfix"></div>
@@ -79,5 +79,9 @@
         </div>
     </div>
 </body>
+
+<script src="https://code.jquery.com/jquery.js"></script>
+<script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
+<script type="text/javascript" src="assets/js/firebase.js"></script>
 
 </html>
