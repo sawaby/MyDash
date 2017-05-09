@@ -1,4 +1,8 @@
-.border{
+/*.border{
   border: 1px solid black;
+}*/
+
+#mainContainer{
+  text-align: center;
   height: 800px;
 }

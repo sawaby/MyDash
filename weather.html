@@ -3,20 +3,35 @@
   <head>
     <meta charset="utf-8">
     <title>Weather Api</title>
+    <!--bootstrap Toggle-->
+    <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
     <!--bootstrapCss-->
     <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
     <!--customCss-->
     <link rel="stylesheet" href="./assets/css/style.css">
+    <!--weatherIcons-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.10/css/weather-icons.min.css">
   </head>
   <body>
     <div class="container border" id="mainContainer">
+      <!--Date and Day-->
+      <div class="row border" id="dateRow">
+        <p id="date"></p>
+      </div>
       <!--CityName-->
-      <div class="row">
-
+      <div class="row border" id="cityNameRow">
+        <p id="cityName"></p>
       </div>
       <!--Weather Icon and Conditions-->
+      <div class="row border" id="conditionsRow">
+        <i id="weatherIcon" class="wi"></i>
+        <p id="condition"></p>
+      </div>
       <!--Temperature with F and C Toggle-->
-      <!--Date and Day-->
+      <div class="row border" id="tempToggleRow">
+        <p><span id="maxTemp"></span><span id="minTemp"></span></p>
+        <!-- <input type="checkbox" checked data-toggle="toggle" id="tempToggle"> -->
+      </div>
     </div>
 
   <!--jQuery-->
@@ -26,10 +41,11 @@
   crossorigin="anonymous"></script>
   <!--bootstrapJs-->
   <script type="text/javascript" src="./assets/js/bootstrap.min.js"></script>
-  <!--customJS-->
-  <script type="text/javascript" src="./assets/js/js.js"></script>
+  <!--momentJS-->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
   <!--weatherJs-->
   <script type="text/javascript" src="./assets/js/weather.js"></script>
-
+  <!--bootstrap Toggle-->
+  <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
   </body>
 </html>
