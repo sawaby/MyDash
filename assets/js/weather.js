@@ -38,10 +38,14 @@ function getPositionSuccess(position){
   console.log("lat " + lat);
   var key = "9969647cc8678f8c1ebead8fb67b964a";
 <<<<<<< HEAD
+<<<<<<< HEAD
   var url = 'http://api.openweathermap.org/data/2.5/weather?lat='+lat+'&lon='+long+'&appid='+key+'&units=imperial';
 =======
   var url = 'http://api.openweathermap.org/data/2.5/weather?lat='+lat+'&lon='+long+'&appid='+key+'';
 >>>>>>> b97936dcd35e909012331e548a1fc42d9481cd97
+=======
+  var url = 'http://api.openweathermap.org/data/2.5/weather?lat='+lat+'&lon='+long+'&appid='+key+'';
+>>>>>>> 4cd78f80b872bf975e2b873fba0df67aa36d0e66
   console.log(url);
   $.ajax({
     url : url,
