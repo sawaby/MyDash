@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Project One: myDash</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+    .col-sm-2.col-xs-4 {
+        padding: 5px;
+    }
+    
+    .col-sm-4.col-xs-8 {
+        padding: 5px;
+    }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-default">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">MyDash</a>
+            </div>
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <button id="signIn">Sign In</button>
+                </li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Portfolio</a></li>
+                <li>
+                    <button id="signOut">Log Out</button>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container mydash-modules">
+        <div class="row">
+            <div class="col-sm-2 col-xs-4">
+                <div id="module-01" class="module">
+                    <div>
+                        <img src="http://placehold.it/300x300" class="img-responsive" alt="img" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-2 col-xs-4">
+                <div id="module-02" class="module">
+                    <div>
+                        <img src="http://placehold.it/300x300" class="img-responsive" alt="img" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4 col-xs-8">
+                <div id="module-03" class="module">
+                    <div>
+                        <img src="http://placehold.it/600x300" class="img-responsive" alt="img" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-2 col-xs-4">
+                <div id="module-04" class="module">
+                    <div>
+                        <img src="http://placehold.it/300x300" class="img-responsive" alt="img" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-2 col-xs-4">
+                <div id="module-05" class="module">
+                    <div>
+                        <img src="http://placehold.it/300x300" class="img-responsive" alt="img" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4 col-xs-8">
+                <div id="module-06" class="module">
+                    <div>
+                        <img src="http://placehold.it/600x300" class="img-responsive" alt="img" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-2 col-xs-4">
+                <div id="module-07" class="module">
+                    <div>
+                        <img src="http://placehold.it/300x300" class="img-responsive" alt="img" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-2 col-xs-4">
+                <div id="module-08" class="module">
+                    <div>
+                        <img src="http://placehold.it/300x300" class="img-responsive" alt="img" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4 col-xs-8">
+                <div id="module-09" class="module">
+                    <div>
+                        <img src="http://placehold.it/600x300" class="img-responsive" alt="img" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="https://code.jquery.com/jquery.js"></script>
+<script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
+<script>
+var config = {
+    apiKey: "AIzaSyAap6jgbmIg6B8xpI8XwK0o2BH3VaexXN4",
+    authDomain: "zack-1.firebaseapp.com",
+    databaseURL: "https://zack-1.firebaseio.com",
+    projectId: "zack-1",
+    storageBucket: "zack-1.appspot.com",
+    messagingSenderId: "295740861099"
+};
+firebase.initializeApp(config);
+
+
+var database = firebase.database();
+
+var provider = new firebase.auth.GoogleAuthProvider();
+provider.addScope('https://www.googleapis.com/auth/plus.login');
+
+
+
+$("#signIn").click(function() {
+
+    firebase.auth().signInWithPopup(provider).then(function(result) {
+        // This gives you a Google Access Token. You can use it to access the Google API.
+        var token = result.credential.accessToken;
+        // The signed-in user info.
+        var user = result.user;
+        // ...
+    }).catch(function(error) {
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        // The email of the user's account used.
+        var email = error.email;
+        // The firebase.auth.AuthCredential type that was used.
+        var credential = error.credential;
+        // ...
+    });
+});
+
+$("signOut").click(function() {
+    firebase.auth().signOut().then(function() {
+        // Sign-out successful.
+    }).catch(function(error) {
+        // An error happened.
+    });
+});
+</script>
+
+</html>
