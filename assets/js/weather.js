@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 $(function() {
     $('#tempToggle').bootstrapToggle({
       on: 'Farenheit',
@@ -18,6 +19,8 @@ $(function() {
       });
     });
 
+=======
+>>>>>>> b97936dcd35e909012331e548a1fc42d9481cd97
 if ("geolocation" in navigator) {
   /* geolocation is available */
   // gets lat and long data to run weather api
@@ -34,7 +37,11 @@ function getPositionSuccess(position){
   console.log("long " + long);
   console.log("lat " + lat);
   var key = "9969647cc8678f8c1ebead8fb67b964a";
+<<<<<<< HEAD
   var url = 'http://api.openweathermap.org/data/2.5/weather?lat='+lat+'&lon='+long+'&appid='+key+'&units=imperial';
+=======
+  var url = 'http://api.openweathermap.org/data/2.5/weather?lat='+lat+'&lon='+long+'&appid='+key+'';
+>>>>>>> b97936dcd35e909012331e548a1fc42d9481cd97
   console.log(url);
   $.ajax({
     url : url,
@@ -42,6 +49,7 @@ function getPositionSuccess(position){
     dataType : "json"
   }).done(function(data){
     console.log(data);
+<<<<<<< HEAD
     var city = data.name;
     console.log(city);
     var iconID = data.weather[0].id;
@@ -76,3 +84,14 @@ function displayContditions(iconID, description){
   $('#weatherIcon').addClass('wi-owm-'+iconID);
   $('#condition').html(description);
 }
+=======
+  });
+
+}
+
+
+
+function getPositionError (){
+  console.log("user did not allow browser location");
+}
+>>>>>>> b97936dcd35e909012331e548a1fc42d9481cd97

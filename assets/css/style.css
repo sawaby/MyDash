@@ -1,8 +1,13 @@
+<<<<<<< HEAD
 /*.border{
   border: 1px solid black;
 }*/
 
 #mainContainer{
   text-align: center;
+=======
+.border{
+  border: 1px solid black;
+>>>>>>> b97936dcd35e909012331e548a1fc42d9481cd97
   height: 800px;
 }
