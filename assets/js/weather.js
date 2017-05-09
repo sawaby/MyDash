@@ -77,9 +77,9 @@ function displayContditions(iconID, description){
   $('#weatherIcon').addClass('wi-owm-'+iconID);
   $('#condition').html(description);
 }
-  });
 
-}
+
+
 
 
 
