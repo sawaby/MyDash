@@ -31,12 +31,6 @@
             </div>
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <a href="#"><i class="fa fa-user-circle-o" aria-hidden="true"></i>&nbsp;Profile</a>
-                </li>
-                <li>
-                    <a href="#"><i class="fa fa-cog" aria-hidden="true"></i>&nbsp;Settings</a>
-                </li>
-                <li>
                     <a href="#"><i class="fa fa-sign-out" aria-hidden="true"></i>&nbsp;Sign Out</a>
                 </li>
             </ul>
@@ -46,13 +40,32 @@
         <div class="row">
             <div class="col-sm-2 col-xs-4">
                 <div id="module-01" class="module">
+                  <div class="container border" id="mainContainer">
+                    <!--Date and Day-->
+                    <div class="row border" id="dateRow">
+                      <div id="date"></div>
+                    </div>
+                    <!--CityName-->
+                    <div class="row border" id="cityNameRow">
+                      <div id="cityName"></div>
+                    </div>
+                    <!--Weather Icon and Conditions-->
+                    <div class="row border" id="conditionsRow">
+                      <i id="weatherIcon" class="wi"></i>
+                      <div id="condition"></div>
+                    </div>
+                    <!--Temperature with F and C Toggle-->
+                    <div class="row border" id="tempToggleRow">
+                      <div><span id="maxTemp"></span><span id="minTemp"></span></div>
+                      <!-- <input type="checkbox" checked data-toggle="toggle" id="tempToggle"> -->
+                    </div>
+                  </div>
                 </div>
             </div>
             <div class="col-sm-2 col-xs-4">
                 <div id="module-02" class="module">
                 </div>
             </div>
-            <div class="col-sm-4 col-xs-8">
             <div class="col-sm-4 col-xs-8" id="container-gmail">
                 <div id="module-03" class="module">
                 </div>
@@ -66,11 +79,35 @@
                 </div>
             </div>
         </div>
+        <!--  <div class="row">
+            <div class="col-sm-4 col-xs-8">
+                <div id="module-06" class="module">
+                </div>
+            </div>
+            <div class="col-sm-2 col-xs-4">
+                <div id="module-07" class="module">
+                </div>
+            </div>
+            <div class="col-sm-2 col-xs-4">
+                <div id="module-08" class="module">
+                </div>
+            </div>
+            <div class="col-sm-4 col-xs-8">
+                <div id="module-09" class="module">
+                </div>
+            </div>
+        </div> -->
+    </div>
     <footer class="footer navbar-fixed-bottom">
         <div class="container">
             <p class="text-center">&copy; 2017 MyDash<sup>&reg;</sup> All Rights Reserved.</p>
         </div>
     </footer>
+    <script>
+    //if firebase.auth().currentUser
+    // then they are signed in
+    // otherwise redirect to login page
+    </script>
     <!--customJS-->
     <script type="text/javascript" src="./assets/js/js.js"></script>
     <!--weatherJs-->
