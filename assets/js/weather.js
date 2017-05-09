@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 $(function() {
     $('#tempToggle').bootstrapToggle({
       on: 'Farenheit',
@@ -19,8 +19,6 @@ $(function() {
       });
     });
 
-=======
->>>>>>> b97936dcd35e909012331e548a1fc42d9481cd97
 if ("geolocation" in navigator) {
   /* geolocation is available */
   // gets lat and long data to run weather api
