@@ -59,6 +59,10 @@ body {
     padding: 20px;
 }
 
+#password-forgot {
+	padding-bottom: 30px;
+}
+
 .login-form {
     background: rgba(255, 255, 255, 0.8);
     padding: 20px;

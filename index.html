@@ -10,10 +10,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.10/css/weather-icons.min.css">
-    <link rel="stylesheet" href="style.css">
+    <!--bootstrap Toggle-->
+    <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
     <!--customCss-->
-    <link rel="stylesheet" href="./assets/css/style.css">
-    <script src="javascript.js"></script>
 </head>
 
 <body>
@@ -40,6 +39,26 @@
         <div class="row">
             <div class="col-sm-2 col-xs-4">
                 <div id="module-01" class="module">
+                  <div class="border" id="mainContainer">
+                    <!--Date and Day-->
+                    <div class="border" id="dateRow">
+                      <div id="date"></div>
+                    </div>
+                     <!--CityName-->
+                    <div class="border" id="cityNameRow">
+                      <div id="cityName"></div>
+                    </div>
+                    <!--Weather Icon and Conditions-->
+                    <div class="border" id="conditionsRow">
+                      <i id="weatherIcon" class="wi"></i>
+                      <div id="condition"></div>
+                    </div>
+                    <!--Temperature with F and C Toggle-->
+                    <div class="border" id="tempToggleRow">
+                      <div><span id="maxTemp"></span><span id="minTemp"></span></div>
+                      <!-- <input type="checkbox" checked data-toggle="toggle" id="tempToggle"> -->
+                    </div>
+                  </div>
                 </div>
             </div>
             <div class="col-sm-2 col-xs-4">
@@ -48,6 +67,12 @@
             </div>
             <div class="col-sm-4 col-xs-8" id="container-gmail">
                 <div id="module-03" class="module">
+                    <!-- gmail api here -->
+                    <!--Add buttons to initiate auth sequence and sign out-->
+                    <button id="authorize-button">Authorize</button>
+                    <button id="signout-button" style="display: none;">Sign Out</button>
+                    <pre id="content" style="display:none;"></pre>
+                    <div id=sms></div>
                 </div>
             </div>
             <div class="col-sm-2 col-xs-4">
@@ -88,10 +113,20 @@
     // then they are signed in
     // otherwise redirect to login page
     </script>
+    <!--momentJS-->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+    <!--bootstrap Toggle-->
+    <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
     <!--customJS-->
-    <script type="text/javascript" src="./assets/js/js.js"></script>
+    <!-- <script type="text/javascript" src="./assets/js/js.js"></script> -->
     <!--weatherJs-->
     <script type="text/javascript" src="./assets/js/weather.js"></script>
+    
 </body>
-
+    <script async defer src="https://apis.google.com/js/api.js"
+      onload="this.onload=function(){};handleClientLoad()"
+      onreadystatechange="if (this.readyState === 'complete') this.onload()">
+    </script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+        <script src="./assets/js/gmail-api.js"></script>
 </html>
