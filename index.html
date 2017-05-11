@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Project One: myDash</title>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -30,7 +31,7 @@
             </div>
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <a href="#"><i class="fa fa-sign-out" aria-hidden="true"></i>&nbsp;Sign Out</a>
+                    <a href="" id="signOut"><i class="fa fa-sign-out" aria-hidden="true"></i>&nbsp;Sign Out</a>
                 </li>
             </ul>
         </div>
@@ -54,6 +55,7 @@
                       <div id="condition"></div>
                     </div>
                     <!--Temperature with F and C Toggle-->
+
                     <div class="border" id="tempToggleRow">
                       <div><span id="maxTemp"></span><span id="minTemp"></span></div>
                       <!-- <input type="checkbox" checked data-toggle="toggle" id="tempToggle"> -->
@@ -117,16 +119,20 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
     <!--bootstrap Toggle-->
     <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+
     <!--customJS-->
     <!-- <script type="text/javascript" src="./assets/js/js.js"></script> -->
     <!--weatherJs-->
     <script type="text/javascript" src="./assets/js/weather.js"></script>
-    
+
 </body>
     <script async defer src="https://apis.google.com/js/api.js"
       onload="this.onload=function(){};handleClientLoad()"
       onreadystatechange="if (this.readyState === 'complete') this.onload()">
     </script>
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-        <script src="./assets/js/gmail-api.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
+    <script src="./assets/js/gmail-api.js"></script>
+    <script type="text/javascript" src="assets/js/firebase.js"></script>
+
 </html>

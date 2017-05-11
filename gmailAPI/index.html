@@ -54,6 +54,7 @@
       var authorizeButton = document.getElementById('authorize-button');
       var signoutButton = document.getElementById('signout-button');
 
+      var emailArr = [];
       /**
        *  On load, called to load the auth2 library and API client library.
        */
@@ -154,6 +155,7 @@
               for(var i = 0; i<5; i++){
                 console.log("loop time out");
                 getMessage(ids[i]);
+
               }
               
               
