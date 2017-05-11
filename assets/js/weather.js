@@ -47,10 +47,8 @@ function getPositionSuccess(position){
     console.log(city);
     var iconID = data.weather[0].id;
     var description = data.weather[0].description;
-    var tempInFMax = data.main.temp_max;
-    var tempInFMin = data.main.temp_min;
-    $('#maxTemp').html("Max Temp: "+tempInFMax);
-    $('#minTemp').html(" Min Temp: "+tempInFMin);
+    var tempInFMax = data.main.temp;
+    $('#maxTemp').html(Math.floor(tempInFMax) + "° F");
     console.log(iconID + description);
 
     displayDate();

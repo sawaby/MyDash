@@ -190,3 +190,13 @@ email {
     font-size: 13px;
     padding-top: 10px;
 }
+
+/* weather icon */
+
+#cityName {
+    font-size: 24px;
+}
+
+#weatherIcon {
+    font-size: 60px;
+}
