@@ -49,8 +49,7 @@ function getPositionSuccess(position){
     var description = data.weather[0].description;
     var tempInFMax = data.main.temp_max;
     var tempInFMin = data.main.temp_min;
-    $('#maxTemp').html("Max Temp: "+tempInFMax);
-    $('#minTemp').html(" Min Temp: "+tempInFMin);
+    $('#maxTemp').html(Math.floor(tempInFMax) + "&deg; F");
     console.log(iconID + description);
 
     displayDate();

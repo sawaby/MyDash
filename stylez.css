@@ -190,3 +190,18 @@ email {
     font-size: 13px;
     padding-top: 10px;
 }
+
+/* WEATHER API */
+
+#cityName {
+    font-size: 30px;
+}
+
+#weatherIcon {
+    font-size: 60px;
+    margin-bottom: 24px;
+}
+
+#maxTemp {
+    font-size: 24px;
+}
