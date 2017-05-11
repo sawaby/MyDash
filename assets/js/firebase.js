@@ -6,7 +6,7 @@
         storageBucket: "zack-1.appspot.com",
         messagingSenderId: "295740861099"
     };
-    firebase.initializeApp(config); 
+    firebase.initializeApp(config);
 
 
     var auth = firebase.auth().currentUser;
