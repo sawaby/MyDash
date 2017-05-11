@@ -8,12 +8,14 @@
     };
     firebase.initializeApp(config); 
 
+    var signedIn = false;
+
+    var URL = "google.com";
 
     var auth = firebase.auth().currentUser;
 
     var provider = new firebase.auth.GoogleAuthProvider();
     provider.addScope('https://www.googleapis.com/auth/plus.login');
-
 
 
 $("#google").click(function(event) {
@@ -26,6 +28,8 @@ $("#google").click(function(event) {
       var token = result.credential.accessToken;
       // The signed-in user info.
       var user = result.user;
+
+      window.location = "http://localhost:3000/index.html";
       // ...
     }).catch(function(error) {
       // Handle Errors here.
@@ -46,6 +50,8 @@ $("#sign-in").click(function(event) {
   var email = $("#username").val();
 
   var password = $("#password").val();
+
+  window.location = "http://localhost:3000/index.html";
 
   firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
 
@@ -71,6 +77,9 @@ $("#facebook").click(function(event) {
   var token = result.credential.accessToken;
   // The signed-in user info.
   var user = result.user;
+
+  window.location = "http://localhost:3000/index.html";
+  
   // ...
 }).catch(function(error) {
   // Handle Errors here.
@@ -98,6 +107,7 @@ $("#twitter").click(function(event) {
   var secret = result.credential.secret;
   // The signed-in user info.
   var user = result.user;
+  window.location = "http://localhost:3000/index.html";  
   // ...
 }).catch(function(error) {
   // Handle Errors here.
@@ -110,13 +120,20 @@ $("#twitter").click(function(event) {
   // ...
 });
 
-})
+});
 
 
-// $("signOut").click(function() {
-//     firebase.auth().signOut().then(function() {
-//   // Sign-out successful.
-// }).catch(function(error) {
-//   // An error happened.
-// });
-// });
+
+
+$("#signOut").click(function(event) {
+
+    event.preventDefault();
+
+    firebase.auth().signOut().then(function() {
+
+    window.location = "http://localhost:3000/sign-in.html";
+  // Sign-out successful.
+}).catch(function(error) {
+  // An error happened.
+});
+});

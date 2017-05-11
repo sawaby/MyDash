@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.10/css/weather-icons.min.css">
     <!--bootstrap Toggle-->
     <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="stylez.css">
     <!--customCss-->
 </head>
 
@@ -30,7 +31,7 @@
             </div>
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <a href="#"><i class="fa fa-sign-out" aria-hidden="true"></i>&nbsp;Sign Out</a>
+                    <a href="" id="signOut"><i class="fa fa-sign-out" aria-hidden="true"></i>Sign Out</a>
                 </li>
             </ul>
         </div>
@@ -128,5 +129,7 @@
       onreadystatechange="if (this.readyState === 'complete') this.onload()">
     </script>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-        <script src="./assets/js/gmail-api.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
+    <script src="./assets/js/gmail-api.js"></script>
+    <script type="text/javascript" src="assets/js/firebase.js"></script>
 </html>
