@@ -29,7 +29,7 @@ $("#google").click(function(event) {
       // The signed-in user info.
       var user = result.user;
 
-      window.location = "http://sawaby.github.io/MyDash/index.html";
+      window.location = "http://sawaby.github.io/MyDash/index";
       // ...
     }).catch(function(error) {
       // Handle Errors here.
@@ -51,7 +51,7 @@ $("#sign-in").click(function(event) {
 
   var password = $("#password").val();
 
-  window.location = "http://sawaby.github.io/MyDash/index.html";
+  window.location = "http://sawaby.github.io/MyDash/index";
 
   firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
 
@@ -78,7 +78,7 @@ $("#facebook").click(function(event) {
   // The signed-in user info.
   var user = result.user;
 
-  window.location = "http://sawaby.github.io/MyDash/index.html";
+  window.location = "http://sawaby.github.io/MyDash/index";
   
   // ...
 }).catch(function(error) {
@@ -107,7 +107,7 @@ $("#twitter").click(function(event) {
   var secret = result.credential.secret;
   // The signed-in user info.
   var user = result.user;
-  window.location = "http://sawaby.github.io/MyDash/index.html";  
+  window.location = "http://sawaby.github.io/MyDash/index";  
   // ...
 }).catch(function(error) {
   // Handle Errors here.
@@ -131,7 +131,7 @@ $("#signOut").click(function(event) {
 
     firebase.auth().signOut().then(function() {
 
-    window.location = "http://sawaby.github.io/MyDash/sign-in.html";
+    window.location = "http://sawaby.github.io/MyDash/sign-in";
   // Sign-out successful.
 }).catch(function(error) {
   // An error happened.
