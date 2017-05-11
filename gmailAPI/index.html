@@ -90,13 +90,15 @@
       function updateSigninStatus(isSignedIn) {
         console.log("updateSigninStatus");
         if (isSignedIn) {
-          authorizeButton.style.display = 'true';
+          $("#sms").show();
+          authorizeButton.style.display = 'none';
           signoutButton.style.display = 'block';
           listMessages();
           
         } else {
           authorizeButton.style.display = 'block';
           signoutButton.style.display = 'none';
+          $("#sms").hide();
         }
       }
 
