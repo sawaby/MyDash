@@ -32,7 +32,7 @@
             </div>
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <a href="" id="signOut"><i class="fa fa-sign-out" aria-hidden="true"></i>&nbsp;Sign Out</a>
+                     <a href="#" id="signOut"><i class="fa fa-sign-out" aria-hidden="true"></i>Sign Out</a>
                 </li>
             </ul>
         </div>
@@ -67,8 +67,16 @@
                     <!--Add buttons to initiate auth sequence and sign out-->
                     <button id="authorize-button">Authorize</button>
                     <button id="signout-button" style="display: none;">Sign Out</button>
-                    <pre id="content" style="display:none;"></pre>
-                    <div id=sms></div>
+                    <div id=sms class="slideshow-container">
+                        <table  class="table table-striped" id="table">
+                            <thead id="thead">
+          
+                            </thead>
+                            <tbody id="tbody">
+          
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
             <div class="col-sm-2 col-xs-4">
@@ -123,5 +131,4 @@
 <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
 <script src="./assets/js/gmail-api.js"></script>
 <script type="text/javascript" src="assets/js/firebase.js"></script>
-
 </html>
