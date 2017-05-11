@@ -32,7 +32,7 @@
     <button id="signout-button" style="display: none;">Sign Out</button>
 
     <!-- <pre id="content"></pre> -->
-    <div id=sms>
+    <div id=sms class="slideshow-container">
       <table  class="table table-striped" id="table">
         <thead id="thead">
           
@@ -148,14 +148,17 @@
                 //appendPre(JSON.stringify(MessageList));
                // appendPre(MessageList.id);
                 //console.log(MessageList.id);
-                console.log(MessageList.name);
+                //console.log(MessageList.name);
                 ids[j] = MessageList.id;
                 
               }
               for(var i = 0; i<5; i++){
-                emailArr.push(toString(getMessage(ids[i])));
-                console.log(emailArr);
+                console.log("loop time out");
+                getMessage(ids[i]);
+
               }
+              
+              
              }
           });
         
@@ -170,7 +173,10 @@ var query = 'from:mnazehat@gmail.com rfc822msgid: is:unread';
  * @param  {String} messageId ID of Message to get.
  * @param  {Function} callback Function to call when the request is complete.
  */
+ var arrayEmail = [];
  function getMessage(id) {
+  var promise = {};
+  
   console.log("getMessage");
     console.log(ids[0]);
   var request = gapi.client.gmail.users.messages.get({
@@ -194,15 +200,18 @@ var query = 'from:mnazehat@gmail.com rfc822msgid: is:unread';
                 tr.append('<td><b>'+(resp.payload.headers[i].value).split("<")[0]+'</b></td>');
                 console.log((resp.payload.headers[i].value).split("<")[0]);
                 $("#tbody").append(tr);
+                promise.From = (resp.payload.headers[i].value).split("<")[0];
                 // $("#sms").append("_");
               }
-            }
+            }console.log(promise);
             for(var i = 0; i<resp.payload.headers.length; i++){
               if(resp.payload.headers[i].name === "Subject"){
                tr.append('<td><b>'+resp.payload.headers[i].value+'</b></td>');
-               $("#tbody").append(tr);
+               promise.Subject = resp.payload.headers[i].value;
+               $("#tbody").append(promise.Subject);
+               
               }
-            }
+            }console.log(promise);
             
             for(var i = 0; i<resp.payload.headers.length; i++){
               if(resp.payload.headers[i].name === "Date"){
@@ -212,59 +221,58 @@ var query = 'from:mnazehat@gmail.com rfc822msgid: is:unread';
                 var arr = str.substring(5,10);
                 console.log(arr);
                  tr.append('<td><b>'+arr+'</b></td>');
-                 $("#tbody").append(tr);
+                 promise.Date = arr;
+                 $("#tbody").append(promise.Date);
+                 promise.Date = arr;
               }
             }
             var trbody = $("<tr>");
             trbody.attr("id", "trbody");
-            trbody.append(getBody(resp.payload));
+            promise.body =getBody(resp.payload);
+            trbody.append(promise.body);
            $("#tbody").append(trbody);
-          }
-
-          
+          }   
       }
-
       else{
           appendPre('no message found');
-          console.log(resp.snippet);
-
       }
-  
   });
+  arrayEmail.push(promise);
+  console.log(arrayEmail);
 }
-      //getting body of the email 
-      function getBody(message) {
-        var encodedBody = '';
-        if(typeof message.parts === 'undefined')
-        {
-          encodedBody = message.body.data;
-        }
-        else
-        {
-          encodedBody = getHTMLPart(message.parts);
-        }
-        encodedBody = encodedBody.replace(/-/g, '+').replace(/_/g, '/').replace(/\s/g, '');
-        return decodeURIComponent(escape(window.atob(encodedBody)));
+//getting body of the email 
+function getBody(message) {
+  var encodedBody = '';
+  if(typeof message.parts === 'undefined')
+  {
+    encodedBody = message.body.data;
+  }
+  else
+  {
+    encodedBody = getHTMLPart(message.parts);
+  }
+  encodedBody = encodedBody.replace(/-/g, '+').replace(/_/g, '/').replace(/\s/g, '');
+  return decodeURIComponent(escape(window.atob(encodedBody)));
+}
+function getHTMLPart(arr) {
+  for(var x = 0; x <= arr.length; x++)
+  {
+    if(typeof arr[x].parts === 'undefined')
+    {
+      if(arr[x].mimeType === 'text/html')
+      {
+        return arr[x].body.data;
       }
-      function getHTMLPart(arr) {
-        for(var x = 0; x <= arr.length; x++)
-        {
-          if(typeof arr[x].parts === 'undefined')
-          {
-            if(arr[x].mimeType === 'text/html')
-            {
-              return arr[x].body.data;
-            }
-          }
-          else
-          {
-            return getHTMLPart(arr[x].parts);
-          }
-        }
-        return '';
-      }
+    }
+    else
+    {
+      return getHTMLPart(arr[x].parts);
+    }
+  }
+  return '';
+}
 
-      
+
 
     </script>
 
