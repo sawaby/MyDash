@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Project One: myDash</title>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -31,7 +32,7 @@
             </div>
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <a href="#"><i class="fa fa-sign-out" aria-hidden="true"></i>&nbsp;Sign Out</a>
+                    <a href="#" id="signOut"><i class="fa fa-sign-out" aria-hidden="true"></i>Sign Out</a>
                 </li>
             </ul>
         </div>
@@ -40,24 +41,18 @@
         <div class="row">
             <div class="col-sm-2 col-xs-4">
                 <div id="module-01" class="module">
-                    <div class="border" id="mainContainer">
-                        <!--Date and Day-->
-<!--                         <div class="border" id="dateRow">
-                            <div id="date"></div>
-                        </div> -->
+                    <div class="border text-center" id="mainContainer">
                         <!--CityName-->
                         <div class="border" id="cityNameRow">
-                            <div id="cityName" class="text-center"></div>
+                            <div id="cityName"></div>
                         </div>
                         <!--Weather Icon and Conditions-->
                         <div class="border" id="conditionsRow">
-                            <div class="text-center"><i id="weatherIcon" class="wi"></i></div>
-                            <!-- <div id="condition"></div> -->
+                            <i id="weatherIcon" class="wi"></i>
                         </div>
                         <!--Temperature with F and C Toggle-->
                         <div class="border" id="tempToggleRow">
-                            <div class="text-center"><span id="maxTemp"></span></div>
-                            <!-- <input type="checkbox" checked data-toggle="toggle" id="tempToggle"> -->
+                            <div><span id="maxTemp"></span></div>
                         </div>
                     </div>
                 </div>
@@ -72,8 +67,14 @@
                     <!--Add buttons to initiate auth sequence and sign out-->
                     <button id="authorize-button">Authorize</button>
                     <button id="signout-button" style="display: none;">Sign Out</button>
-                    <pre id="content" style="display:none;"></pre>
-                    <div id=sms></div>
+                    <div id=sms class="slideshow-container">
+                        <table class="table table-striped" id="table">
+                            <thead id="thead">
+                            </thead>
+                            <tbody id="tbody">
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
             <div class="col-sm-2 col-xs-4">
@@ -126,6 +127,8 @@
 <script async defer src="https://apis.google.com/js/api.js" onload="this.onload=function(){};handleClientLoad()" onreadystatechange="if (this.readyState === 'complete') this.onload()">
 </script>
 <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+<script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
 <script src="./assets/js/gmail-api.js"></script>
+<script type="text/javascript" src="assets/js/firebase.js"></script>
 
 </html>
