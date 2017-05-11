@@ -6,7 +6,7 @@
         storageBucket: "zack-1.appspot.com",
         messagingSenderId: "295740861099"
     };
-    firebase.initializeApp(config); 
+    firebase.initializeApp(config);
 
     var signedIn = false;
 
@@ -137,3 +137,4 @@ $("#signOut").click(function(event) {
   // An error happened.
 });
 });
+
