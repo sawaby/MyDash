@@ -64,7 +64,7 @@ body {
 }
 
 #password-forgot {
-	padding-bottom: 30px;
+    padding-bottom: 30px;
 }
 
 .login-form {
@@ -217,4 +217,19 @@ email {
 
 .slideBodyContentDiv{
   position: absolute;
+
+
+/* weather icon */
+
+#cityName {
+    font-size: 30px;
+}
+
+#weatherIcon {
+    font-size: 60px;
+    margin-bottom: 24px;
+}
+
+#maxTemp {
+    font-size: 24px;
 }

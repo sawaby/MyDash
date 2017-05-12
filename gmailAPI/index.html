@@ -18,6 +18,14 @@
       #trbody{
         width: 100%;
       }
+      .bsize{
+        height: 20px;
+        width: 20px;
+      }
+      .buttons{
+        border-radius: 8px;
+      
+      }
     </style>
     <!-- Moment.js Reference -->
     <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
@@ -25,11 +33,16 @@
    
   </head>
   <body>
+    <script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
     <p>Gmail API</p>
 
     <!--Add buttons to initiate auth sequence and sign out-->
-    <button id="authorize-button" style="display: none;">Authorize</button>
-    <button id="signout-button" style="display: none;">Sign Out</button>
+    <img id="authorize-button" class = "bsize" style="display: none;" src="authorize.png">
+    <button id="signout-button" class = "buttons" style="display: none;"><img class="bsize" src="sign-out.png"></button>
+    <button id="refresh-button" class = "buttons" style="display: none;"><img class="bsize" src="refresh.png"></button>
 
     <!-- <pre id="content"></pre> -->
     <div id=sms class="slideshow-container">
@@ -90,13 +103,17 @@
       function updateSigninStatus(isSignedIn) {
         console.log("updateSigninStatus");
         if (isSignedIn) {
-          authorizeButton.style.display = 'true';
+          $("#sms").show();
+          $("#refresh-button").show();
+          authorizeButton.style.display = 'none';
           signoutButton.style.display = 'block';
           listMessages();
           
         } else {
           authorizeButton.style.display = 'block';
           signoutButton.style.display = 'none';
+          $("#sms").hide();
+          $("#refresh-button").hide();
         }
       }
 
@@ -113,18 +130,27 @@
       function handleSignoutClick(event) {
         gapi.auth2.getAuthInstance().signOut();
       }
+       /**
+       *  Sign out the user upon button click.
+       */
+       
+       $("#refresh-button").on("click", function(){
+         $("#thead").empty();
+         $("#tbody").empty();
+          handleClientLoad();
 
+       });
       /**
        * Append a pre element to the body containing the given message
        * as its text node. Used to display the results of the API call.
        *
        * @param {string} message Text to be placed in pre element.
        */
-      function appendPre(message) {
-        var pre = document.getElementById('content');
-        var textContent = document.createTextNode(message + '\n');
-        pre.appendChild(textContent);
-      }
+      // function appendPre(message) {
+      //   var pre = document.getElementById('content');
+      //   var textContent = document.createTextNode(message + '\n');
+      //   pre.appendChild(textContent);
+      // }
 
       /**
        * Print all Labels in the authorized user's inbox. If no labels
@@ -154,6 +180,7 @@
               }
               for(var i = 0; i<5; i++){
                 console.log("loop time out");
+
                 getMessage(ids[i]);
 
               }
@@ -185,6 +212,7 @@ var query = 'from:mnazehat@gmail.com rfc822msgid: is:unread';
     'format': 'full'
   });
   request.execute(function(resp){
+
   var msgSnippet = resp.messages;
       console.log(resp);
       if(resp){
@@ -280,9 +308,6 @@ function getHTMLPart(arr) {
       onload="this.onload=function(){};handleClientLoad()"
       onreadystatechange="if (this.readyState === 'complete') this.onload()">
     </script>
-    <script
-  src="https://code.jquery.com/jquery-3.2.1.min.js"
-  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-  crossorigin="anonymous"></script>
+  
   </body>
 </html>

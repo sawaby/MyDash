@@ -1,5 +1,5 @@
 // Client ID and API key from the Developer Console
-
+console.error("error")
 var CLIENT_ID = '655575217025-1v0e1658o8lsk6gk3vhr5124i0il6cvv.apps.googleusercontent.com';
 var apiKey = 'AIzaSyARv_7mLCF37h5mdIVraL5tBxIziElD99E';
 var SCOPES = 'https://www.googleapis.com/auth/gmail.readonly';
@@ -43,13 +43,15 @@ function initClient() {
 function updateSigninStatus(isSignedIn) {
   console.log("updateSigninStatus");
   if (isSignedIn) {
-    authorizeButton.style.display = 'true';
+    $("#sms").show();
+    authorizeButton.style.display = 'none';
     signoutButton.style.display = 'block';
     listMessages();
 
   } else {
     authorizeButton.style.display = 'block';
     signoutButton.style.display = 'none';
+    $("#sms").hide();
   }
 }
 
@@ -58,6 +60,10 @@ function updateSigninStatus(isSignedIn) {
  */
 function handleAuthClick(event) {
   gapi.auth2.getAuthInstance().signIn();
+   $("#authorize-button").hide();
+    console.log("loged in");
+ // $("#sms").show();
+  
 }
 
 /**
@@ -65,19 +71,9 @@ function handleAuthClick(event) {
  */
 function handleSignoutClick(event) {
   gapi.auth2.getAuthInstance().signOut();
+
 }
 
-/**
- * Append a pre element to the body containing the given message
- * as its text node. Used to display the results of the API call.
- *
- * @param {string} message Text to be placed in pre element.
- */
-function appendPre(message) {
-  var pre = document.getElementById('content');
-  var textContent = document.createTextNode(message + '\n');
-  pre.appendChild(textContent);
-}
 
 /**
  * Print all Labels in the authorized user's inbox. If no labels

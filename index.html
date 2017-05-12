@@ -14,7 +14,7 @@
     <!--bootstrap Toggle-->
     <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
     <!--customCss-->
-    <link rel="stylesheet" href="./stylez.css">
+    <link rel="stylesheet" href="stylez.css">
 </head>
 
 <body>
@@ -32,7 +32,7 @@
             </div>
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                     <a href="#" id="signOut"><i class="fa fa-sign-out" aria-hidden="true"></i>Sign Out</a>
+                    <a href="#" id="signOut"><i class="fa fa-sign-out" aria-hidden="true"></i>Sign Out</a>
                 </li>
             </ul>
         </div>
@@ -41,27 +41,20 @@
         <div class="row">
             <div class="col-sm-2 col-xs-4">
                 <div id="module-01" class="module">
-                  <div class="border" id="mainContainer">
-                    <!--Date and Day-->
-                    <div class="border" id="dateRow">
-                      <div id="date"></div>
+                    <div class="border text-center" id="mainContainer">
+                        <!--CityName-->
+                        <div class="border" id="cityNameRow">
+                            <div id="cityName"></div>
+                        </div>
+                        <!--Weather Icon and Conditions-->
+                        <div class="border" id="conditionsRow">
+                            <i id="weatherIcon" class="wi"></i>
+                        </div>
+                        <!--Temperature with F and C Toggle-->
+                        <div class="border" id="tempToggleRow">
+                            <div><span id="maxTemp"></span></div>
+                        </div>
                     </div>
-                     <!--CityName-->
-                    <div class="border" id="cityNameRow">
-                      <div id="cityName"></div>
-                    </div>
-                    <!--Weather Icon and Conditions-->
-                    <div class="border" id="conditionsRow">
-                      <i id="weatherIcon" class="wi"></i>
-                      <div id="condition"></div>
-                    </div>
-                    <!--Temperature with F and C Toggle-->
-
-                    <div class="border" id="tempToggleRow">
-                      <div><span id="maxTemp"></span><span id="minTemp"></span></div>
-                      <!-- <input type="checkbox" checked data-toggle="toggle" id="tempToggle"> -->
-                    </div>
-                  </div>
                 </div>
             </div>
             <div class="col-sm-2 col-xs-4">
@@ -75,7 +68,6 @@
                     <button id="authorize-button">Authorize</button>
                     <button id="signout-button" style="display: none;">Sign Out</button>
                     <div id=sms class="slideshow-container">
-
                         <!--comment out the table-->
 
                         <!-- <table  class="table table-striped" id="table">
@@ -83,7 +75,6 @@
 
                             </thead>
                             <tbody id="tbody">
-
                             </tbody>
                         </table> -->
                         <!--emailSlide Container-->
@@ -215,14 +206,12 @@
     </script>
     <!--momentJS-->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
-    <!--bootstrap Toggle-->
-    <!-- <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script> -->
-
     <!--customJS-->
     <!-- <script type="text/javascript" src="./assets/js/js.js"></script> -->
     <!--weatherJs-->
     <script type="text/javascript" src="./assets/js/weather.js"></script>
 </body>
+
     <script async defer src="https://apis.google.com/js/api.js"
       onload="this.onload=function(){};handleClientLoad()"
       onreadystatechange="if (this.readyState === 'complete') this.onload()">
@@ -235,6 +224,7 @@
     <script type="text/javascript" src="./assets/js/jquery.cycle2.js"></script>
     <!--emailHandleJs-->
     <script type="text/javascript" src="./assets/js/emailHandle.js"></script>
+
 
 
 </html>
