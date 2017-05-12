@@ -164,18 +164,34 @@ var query = 'from:mnazehat@gmail.com rfc822msgid: is:unread';
 
               }
             }console.log(promise);
+              console.log(arrayEmail);
+              arrayEmail.push(promise);
+              console.log(arrayEmail);
+              // run through array of emails and append to
+              // corresponding slide in DOM
+              for (var i = 0; i < arrayEmail.length; i++) {
+                var date = arrayEmail[i].Date;
+                var from = arrayEmail[i].From;
+                var subject = arrayEmail[i].Subject;
+                var body = arrayEmail[i].body;
+                console.log("Email " +i+ " from "+from);
+                $('#slide_'+i+"_date").html(date);
+                $('#slide_'+i+"_from").html(from);
+                $('#slide_'+i+"_subject").html(subject);
+                $('#slide_'+i+"_body").html(body);
 
+              }
             for(var i = 0; i<resp.payload.headers.length; i++){
               if(resp.payload.headers[i].name === "Date"){
 
                 var str = resp.payload.headers[i].value;
-                console.log(resp.payload.headers[i].value);
+                // console.log(resp.payload.headers[i].value);
                 var arr = str.substring(5,10);
-                console.log(arr);
+                // console.log(arr);
                  tr.append('<td><b>'+arr+'</b></td>');
                  promise.Date = arr;
                  $("#tbody").append(promise.Date);
-                //  promise.Date = arr;
+                  promise.Date = arr;
               }
             }
             var trbody = $("<tr>");
@@ -191,18 +207,6 @@ var query = 'from:mnazehat@gmail.com rfc822msgid: is:unread';
           appendPre('no message found');
       }
   });
-  // the array is only available within the get message function
-  arrayEmail.push(promise);
-  console.log(arrayEmail);
-  console.log(arrayEmail.length);
-  // for each object in arrayEmail parse and send to
-  // corresponding DOM slide
-  for (var i = 0; i < arrayEmail.length; i++) {
-    console.log(i);
-    console.log(arrayEmail[i]);
-    console.log(typeof arrayEmail[i]);
-    console.log(arrayEmail[i]["Date"]);
-  }
 }
 
 //getting body of the email
