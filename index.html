@@ -14,6 +14,7 @@
     <!--bootstrap Toggle-->
     <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
     <!--customCss-->
+    <link rel="stylesheet" href="./stylez.css">
 </head>
 
 <body>
@@ -85,6 +86,92 @@
 
                             </tbody>
                         </table> -->
+                        <!--emailSlide Container-->
+                        <div class="border" id="emailSlideContainer">
+                          <!--slideContainer-->
+                          <div class="cycle-slideshow"
+                            data-cycle-fx="scrollHorz"
+                            data-cycle-timeout="2000"
+                            data-cycle-slides="> div"
+                            >
+                            <!--slideOne-->
+                            <div style="background:#fcc" class="emailSlide" id="slide-0">
+                                <section class="slideDate">
+                                  Date : <span id="slide-0-date"></span>
+                                </section>
+                                <section class="slideFrom">
+                                  From : <span id="slide-0-from"></span>
+                                </section>
+                                <section class="slideDate">
+                                  Subject : <span id="slide-0-subject"></span>
+                                </section>
+                                <section class="slideBody">
+                                  Body : <span id="slide-0-body"></span>
+                                </section>
+                            </div>
+                            <!--slideTwo-->
+                            <div style="background:#cfc" class="emailSlide" id="slide-1">
+                              <section class="slideDate">
+                                Date : <span id="slide-1-date"></span>
+                              </section>
+                              <section class="slideFrom">
+                                From : <span id="slide-1-from"></span>
+                              </section>
+                              <section class="slideDate">
+                                Subject : <span id="slide-1-subject"></span>
+                              </section>
+                              <section class="slideBody">
+                                Body : <span id="slide-1-body"></span>
+                              </section>
+                            </div>
+                            <!--slideThree-->
+                            <div style="background:#ccf" class="emailSlide" id="slide-2">
+                              <section class="slideDate">
+                                Date : <span id="slide-2-date"></span>
+                              </section>
+                              <section class="slideFrom">
+                                From : <span id="slide-2-from"></span>
+                              </section>
+                              <section class="slideDate">
+                                Subject : <span id="slide-2-subject"></span>
+                              </section>
+                              <section class="slideBody">
+                                Body : <span id="slide-2-body"></span>
+                              </section>
+                            </div>
+                            <!--slideFour-->
+                            <div style="background:#ccf" class="emailSlide" id="slide-3">
+                              <section class="slideDate">
+                                Date : <span id="slide-3-date"></span>
+                              </section>
+                              <section class="slideFrom">
+                                From : <span id="slide-3-from"></span>
+                              </section>
+                              <section class="slideDate">
+                                Subject : <span id="slide-3-subject"></span>
+                              </section>
+                              <section class="slideBody">
+                                Body : <span id="slide-3-body"></span>
+                              </section>
+                            </div>
+                            <!--slideFive-->
+                            <div style="background:#ccf" class="emailSlide" id="slide-4">
+                              <section class="slideDate">
+                                Date : <span id="slide-4-date"></span>
+                              </section>
+                              <section class="slideFrom">
+                                From : <span id="slide-4-from"></span>
+                              </section>
+                              <section class="slideDate">
+                                Subject : <span id="slide-4-subject"></span>
+                              </section>
+                              <section class="slideBody">
+                                Body : <span id="slide-4-body"></span>
+                              </section>
+                            </div>
+                          </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
@@ -129,7 +216,7 @@
     <!--momentJS-->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
     <!--bootstrap Toggle-->
-    <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+    <!-- <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script> -->
 
     <!--customJS-->
     <!-- <script type="text/javascript" src="./assets/js/js.js"></script> -->
@@ -141,11 +228,11 @@
       onreadystatechange="if (this.readyState === 'complete') this.onload()">
   </script>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-
-
     <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
     <script src="./assets/js/gmail-api.js"></script>
     <script type="text/javascript" src="assets/js/firebase.js"></script>
+    <!--jqueryCycle2-->
+    <script type="text/javascript" src="./assets/js/jquery.cycle2.js"></script>
     <!--emailHandleJs-->
     <script type="text/javascript" src="./assets/js/emailHandle.js"></script>
 

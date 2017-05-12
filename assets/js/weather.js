@@ -1,10 +1,5 @@
 
-$(function() {
-    $('#tempToggle').bootstrapToggle({
-      on: 'Farenheit',
-      off: 'Celsius'
-    });
-  });
+
 
   $(function() {
       $('#tempToggle').change(function() {

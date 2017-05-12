@@ -143,7 +143,7 @@ var query = 'from:mnazehat@gmail.com rfc822msgid: is:unread';
          // appendPre(resp.snippet);
 
           console.log(resp.payload);
-          console.log(resp.payload.body);
+          // console.log(resp.payload.body);
           for(var i = 0; i<resp.payload.headers.length; i++){
             console.log(resp.payload.headers[i].name);
             var tr = $("<tr>");
@@ -175,7 +175,7 @@ var query = 'from:mnazehat@gmail.com rfc822msgid: is:unread';
                  tr.append('<td><b>'+arr+'</b></td>');
                  promise.Date = arr;
                  $("#tbody").append(promise.Date);
-                 promise.Date = arr;
+                //  promise.Date = arr;
               }
             }
             var trbody = $("<tr>");
@@ -191,9 +191,20 @@ var query = 'from:mnazehat@gmail.com rfc822msgid: is:unread';
           appendPre('no message found');
       }
   });
+  // the array is only available within the get message function
   arrayEmail.push(promise);
   console.log(arrayEmail);
+  console.log(arrayEmail.length);
+  // for each object in arrayEmail parse and send to
+  // corresponding DOM slide
+  for (var i = 0; i < arrayEmail.length; i++) {
+    console.log(i);
+    console.log(arrayEmail[i]);
+    console.log(typeof arrayEmail[i]);
+    console.log(arrayEmail[i]["Date"]);
+  }
 }
+
 //getting body of the email
 function getBody(message) {
   var encodedBody = '';
