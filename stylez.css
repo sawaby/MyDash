@@ -210,3 +210,11 @@ email {
   height: 270px;
   width: 100%;
 }
+
+.slideBody{
+  position: relative;
+}
+
+.slideBodyContentDiv{
+  position: absolute;
+}
