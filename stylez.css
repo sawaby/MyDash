@@ -45,6 +45,10 @@ body {
     width: 380px;
 }
 
+#module-03{
+  position: relative;
+}
+
 .panel .panel-default {
     margin: 0 auto;
     position: absolute;
@@ -190,6 +194,29 @@ email {
     font-size: 13px;
     padding-top: 10px;
 }
+
+/*.border{
+  border : 1px solid black;
+}*/
+
+#emailSlideContainer{
+  width: 95%;
+  margin-top: 28px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.emailSlide{
+  height: 270px;
+  width: 100%;
+}
+
+.slideBody{
+  position: relative;
+}
+
+.slideBodyContentDiv{
+  position: absolute;
 
 
 /* weather icon */

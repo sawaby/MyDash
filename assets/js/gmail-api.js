@@ -47,7 +47,7 @@ function updateSigninStatus(isSignedIn) {
     authorizeButton.style.display = 'none';
     signoutButton.style.display = 'block';
     listMessages();
-    
+
   } else {
     authorizeButton.style.display = 'block';
     signoutButton.style.display = 'none';
@@ -82,13 +82,13 @@ function handleSignoutClick(event) {
  var ids = [];
 function listMessages() {
   console.log("listMessages");
-  
+
     gapi.client.gmail.users.messages.list({
       'userId': 'me',
       'format': 'full'
     }).then(function(response){
       console.log("setting the ids");
-      
+
        var sms = response.result.messages;
        console.log(JSON.parse(response.body));
        if(sms && sms.length >0){
@@ -99,17 +99,17 @@ function listMessages() {
           //console.log(MessageList.id);
           //console.log(MessageList.name);
           ids[j] = MessageList.id;
-          
+
         }
         for(var i = 0; i<5; i++){
           console.log("loop time out");
           getMessage(ids[i]);
         }
-        
-        
+
+
        }
     });
-  
+
 }
 var query = 'from:mnazehat@gmail.com rfc822msgid: is:unread';
 
@@ -124,7 +124,7 @@ var query = 'from:mnazehat@gmail.com rfc822msgid: is:unread';
  var arrayEmail = [];
  function getMessage(id) {
   var promise = {};
-  
+
   console.log("getMessage");
     console.log(ids[0]);
   var request = gapi.client.gmail.users.messages.get({
@@ -137,9 +137,9 @@ var query = 'from:mnazehat@gmail.com rfc822msgid: is:unread';
       console.log(resp);
       if(resp){
          // appendPre(resp.snippet);
-          
+
           console.log(resp.payload);
-          console.log(resp.payload.body);
+          // console.log(resp.payload.body);
           for(var i = 0; i<resp.payload.headers.length; i++){
             console.log(resp.payload.headers[i].name);
             var tr = $("<tr>");
@@ -157,38 +157,55 @@ var query = 'from:mnazehat@gmail.com rfc822msgid: is:unread';
                tr.append('<td><b>'+resp.payload.headers[i].value+'</b></td>');
                promise.Subject = resp.payload.headers[i].value;
                $("#tbody").append(promise.Subject);
-               
+
               }
             }console.log(promise);
-            
+              console.log(arrayEmail);
+              arrayEmail.push(promise);
+              console.log(arrayEmail);
+              // run through array of emails and append to
+              // corresponding slide in DOM
+              for (var i = 0; i < arrayEmail.length; i++) {
+                var date = arrayEmail[i].Date;
+                var from = arrayEmail[i].From;
+                var subject = arrayEmail[i].Subject;
+                var body = arrayEmail[i].body;
+                console.log("Email " +i+ " from "+from);
+                $('#slide_'+i+"_date").html(date);
+                $('#slide_'+i+"_from").html(from);
+                $('#slide_'+i+"_subject").html(subject);
+                $('#slide_'+i+"_body").html(body);
+
+              }
             for(var i = 0; i<resp.payload.headers.length; i++){
               if(resp.payload.headers[i].name === "Date"){
-               
+
                 var str = resp.payload.headers[i].value;
-                console.log(resp.payload.headers[i].value);
+                // console.log(resp.payload.headers[i].value);
                 var arr = str.substring(5,10);
-                console.log(arr);
+                // console.log(arr);
                  tr.append('<td><b>'+arr+'</b></td>');
                  promise.Date = arr;
                  $("#tbody").append(promise.Date);
-                 promise.Date = arr;
+                  promise.Date = arr;
               }
             }
             var trbody = $("<tr>");
             trbody.attr("id", "trbody");
             promise.body =getBody(resp.payload);
             trbody.append(promise.body);
-           $("#tbody").append(trbody);
-          }   
+          //  $("#tbody").append(trbody);
+          //  console.log(trbody);
+
+          }
       }
       else{
           appendPre('no message found');
       }
   });
-  arrayEmail.push(promise);
-  console.log(arrayEmail);
 }
-//getting body of the email 
+
+//getting body of the email
 function getBody(message) {
   var encodedBody = '';
   if(typeof message.parts === 'undefined')

@@ -68,12 +68,101 @@
                     <button id="authorize-button">Authorize</button>
                     <button id="signout-button" style="display: none;">Sign Out</button>
                     <div id=sms class="slideshow-container">
-                        <table class="table table-striped" id="table">
+                        <!--comment out the table-->
+
+                        <!-- <table  class="table table-striped" id="table">
                             <thead id="thead">
+
                             </thead>
                             <tbody id="tbody">
                             </tbody>
-                        </table>
+                        </table> -->
+                        <!--emailSlide Container-->
+                        <div class="border" id="emailSlideContainer">
+                          <!--slideContainer-->
+                          <div class="cycle-slideshow"
+                            data-cycle-fx="scrollHorz"
+                            data-cycle-timeout="2000"
+                            data-cycle-slides="> div"
+                            >
+                            <!--slideOne-->
+                            <div style="background:#fcc" class="emailSlide" id="slide-0">
+                                <section class="slideDate">
+                                  Date : <span id="slide_0_date"></span>
+                                </section>
+                                <section class="slideFrom">
+                                  From : <span id="slide_0_from"></span>
+                                </section>
+                                <section class="slideSubject">
+                                  Subject : <span id="slide_0_subject"></span>
+                                </section>
+                                <section class="slideBody">
+                                  Body : <div class="slideBodyContentDiv" id="slide_0_body"></div>
+                                </section>
+                            </div>
+                            <!--slideTwo-->
+                            <div style="background:#cfc" class="emailSlide" id="slide_1">
+                              <section class="slideDate">
+                                Date : <span id="slide1_date"></span>
+                              </section>
+                              <section class="slideFrom">
+                                From : <span id="slide_1_from"></span>
+                              </section>
+                              <section class="slideDate">
+                                Subject : <span id="slide_1_subject"></span>
+                              </section>
+                              <section class="slideBody">
+                                Body : <div class="slideBodyContentDiv" id="slide_1_body"></div>
+                              </section>
+                            </div>
+                            <!--slideThree-->
+                            <div style="background:#ccf" class="emailSlide" id="slide_2">
+                              <section class="slideDate">
+                                Date : <span id="slide_2_date"></span>
+                              </section>
+                              <section class="slideFrom">
+                                From : <span id="slide_2_from"></span>
+                              </section>
+                              <section class="slideDate">
+                                Subject : <span id="slide_2_subject"></span>
+                              </section>
+                              <section class="slideBody">
+                                Body : <div class="slideBodyContentDiv" id="slide_2_body"></div>
+                              </section>
+                            </div>
+                            <!--slideFour-->
+                            <div style="background:#ccf" class="emailSlide" id="slide_3">
+                              <section class="slideDate">
+                                Date : <span id="slide_3_date"></span>
+                              </section>
+                              <section class="slideFrom">
+                                From : <span id="slide_3_from"></span>
+                              </section>
+                              <section class="slideDate">
+                                Subject : <span id="slide_3_subject"></span>
+                              </section>
+                              <section class="slideBody">
+                                Body : <div class="slideBodyContentDiv" id="slide_3_body"></div>
+                              </section>
+                            </div>
+                            <!--slideFive-->
+                            <div style="background:#ccf" class="emailSlide" id="slide_4">
+                              <section class="slideDate">
+                                Date : <span id="slide_4_date"></span>
+                              </section>
+                              <section class="slideFrom">
+                                From : <span id="slide_4_from"></span>
+                              </section>
+                              <section class="slideDate">
+                                Subject : <span id="slide_4_subject"></span>
+                              </section>
+                              <section class="slideBody">
+                                Body : <div class="slideBodyContentDiv" id="slide_4_body"></div>
+                              </section>
+                            </div>
+                          </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
@@ -117,18 +206,25 @@
     </script>
     <!--momentJS-->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
-    <!--bootstrap Toggle-->
-    <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
     <!--customJS-->
     <!-- <script type="text/javascript" src="./assets/js/js.js"></script> -->
     <!--weatherJs-->
     <script type="text/javascript" src="./assets/js/weather.js"></script>
 </body>
-<script async defer src="https://apis.google.com/js/api.js" onload="this.onload=function(){};handleClientLoad()" onreadystatechange="if (this.readyState === 'complete') this.onload()">
-</script>
-<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-<script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
-<script src="./assets/js/gmail-api.js"></script>
-<script type="text/javascript" src="assets/js/firebase.js"></script>
+
+    <script async defer src="https://apis.google.com/js/api.js"
+      onload="this.onload=function(){};handleClientLoad()"
+      onreadystatechange="if (this.readyState === 'complete') this.onload()">
+  </script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
+    <script src="./assets/js/gmail-api.js"></script>
+    <script type="text/javascript" src="assets/js/firebase.js"></script>
+    <!--jqueryCycle2-->
+    <script type="text/javascript" src="./assets/js/jquery.cycle2.js"></script>
+    <!--emailHandleJs-->
+    <script type="text/javascript" src="./assets/js/emailHandle.js"></script>
+
+
 
 </html>
