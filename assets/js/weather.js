@@ -29,11 +29,12 @@ function getPositionSuccess(position) {
     console.log("long " + long);
     console.log("lat " + lat);
     var key = "9969647cc8678f8c1ebead8fb67b964a";
-    var url = 'https://api.openweathermap.org/data/2.5/weather?lat=' + lat + '&lon=' + long + '&appid=' + key + '&units=imperial';
+    var url = 'http://api.openweathermap.org/data/2.5/weather?lat=' + lat + '&lon=' + long + '&appid=' + key + '&units=imperial';
     console.log(url);
     $.ajax({
         url: url,
         crossDomain: true,
+        "Access-Control-Allow-Origin":"*",
         dataType: "json"
     }).done(function(data) {
         console.log(data);
