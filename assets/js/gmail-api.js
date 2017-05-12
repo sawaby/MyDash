@@ -46,7 +46,7 @@ function updateSigninStatus(isSignedIn) {
     authorizeButton.style.display = 'true';
     signoutButton.style.display = 'block';
     listMessages();
-    
+
   } else {
     authorizeButton.style.display = 'block';
     signoutButton.style.display = 'none';
@@ -86,13 +86,13 @@ function appendPre(message) {
  var ids = [];
 function listMessages() {
   console.log("listMessages");
-  
+
     gapi.client.gmail.users.messages.list({
       'userId': 'me',
       'format': 'full'
     }).then(function(response){
       console.log("setting the ids");
-      
+
        var sms = response.result.messages;
        console.log(JSON.parse(response.body));
        if(sms && sms.length >0){
@@ -103,17 +103,17 @@ function listMessages() {
           //console.log(MessageList.id);
           //console.log(MessageList.name);
           ids[j] = MessageList.id;
-          
+
         }
         for(var i = 0; i<5; i++){
           console.log("loop time out");
           getMessage(ids[i]);
         }
-        
-        
+
+
        }
     });
-  
+
 }
 var query = 'from:mnazehat@gmail.com rfc822msgid: is:unread';
 
@@ -128,7 +128,7 @@ var query = 'from:mnazehat@gmail.com rfc822msgid: is:unread';
  var arrayEmail = [];
  function getMessage(id) {
   var promise = {};
-  
+
   console.log("getMessage");
     console.log(ids[0]);
   var request = gapi.client.gmail.users.messages.get({
@@ -141,7 +141,7 @@ var query = 'from:mnazehat@gmail.com rfc822msgid: is:unread';
       console.log(resp);
       if(resp){
          // appendPre(resp.snippet);
-          
+
           console.log(resp.payload);
           console.log(resp.payload.body);
           for(var i = 0; i<resp.payload.headers.length; i++){
@@ -161,13 +161,13 @@ var query = 'from:mnazehat@gmail.com rfc822msgid: is:unread';
                tr.append('<td><b>'+resp.payload.headers[i].value+'</b></td>');
                promise.Subject = resp.payload.headers[i].value;
                $("#tbody").append(promise.Subject);
-               
+
               }
             }console.log(promise);
-            
+
             for(var i = 0; i<resp.payload.headers.length; i++){
               if(resp.payload.headers[i].name === "Date"){
-               
+
                 var str = resp.payload.headers[i].value;
                 console.log(resp.payload.headers[i].value);
                 var arr = str.substring(5,10);
@@ -182,8 +182,10 @@ var query = 'from:mnazehat@gmail.com rfc822msgid: is:unread';
             trbody.attr("id", "trbody");
             promise.body =getBody(resp.payload);
             trbody.append(promise.body);
-           $("#tbody").append(trbody);
-          }   
+          //  $("#tbody").append(trbody);
+          //  console.log(trbody);
+
+          }
       }
       else{
           appendPre('no message found');
@@ -192,7 +194,7 @@ var query = 'from:mnazehat@gmail.com rfc822msgid: is:unread';
   arrayEmail.push(promise);
   console.log(arrayEmail);
 }
-//getting body of the email 
+//getting body of the email
 function getBody(message) {
   var encodedBody = '';
   if(typeof message.parts === 'undefined')
