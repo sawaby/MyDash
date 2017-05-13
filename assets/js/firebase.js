@@ -8,11 +8,8 @@
     };
     firebase.initializeApp(config);
 
-    var signedIn = false;
+    var user = firebase.auth().currentUser;
 
-    var URL = "google.com";
-
-    var auth = firebase.auth().currentUser;
 
     var provider = new firebase.auth.GoogleAuthProvider();
     provider.addScope('https://www.googleapis.com/auth/plus.login');
@@ -29,7 +26,7 @@ $("#google").click(function(event) {
       // The signed-in user info.
       var user = result.user;
 
-      window.location = "http://sawaby.github.io/MyDash/index";
+      window.location = "http://localhost:3000/index.html";
       // ...
     }).catch(function(error) {
       // Handle Errors here.
@@ -43,15 +40,19 @@ $("#google").click(function(event) {
     });
 });
 
+
+var email;
+var password;
+
 $("#sign-in").click(function(event) {
 
   event.preventDefault();
 
-  var email = $("#username").val();
+  email = $("#email").val();
 
-  var password = $("#password").val();
+  password = $("#password").val();
 
-  window.location = "http://sawaby.github.io/MyDash/index";
+  window.location = "http://localhost:3000/index.html"
 
   firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
 
@@ -63,8 +64,12 @@ $("#sign-in").click(function(event) {
 
 });
 
-var providerF = new firebase.auth.FacebookAuthProvider();
 
+
+
+
+
+var providerF = new firebase.auth.FacebookAuthProvider();
 
 $("#facebook").click(function(event) {
 
@@ -78,7 +83,7 @@ $("#facebook").click(function(event) {
   // The signed-in user info.
   var user = result.user;
 
-  window.location = "http://sawaby.github.io/MyDash/index";
+  window.location = "http://localhost:3000/index.html";
   
   // ...
 }).catch(function(error) {
@@ -90,6 +95,8 @@ $("#facebook").click(function(event) {
   // The firebase.auth.AuthCredential type that was used.
   var credential = error.credential;
   // ...
+  console.log(errorCode);
+  console.log(errorMessage);
 });
 
 });
@@ -123,6 +130,21 @@ $("#twitter").click(function(event) {
 });
 
 
+firebase.auth().onAuthStateChanged(function(user) {
+  if(user) {
+    console.log(user);
+    if (window.location.href === "http://localhost:3000/sign-in.html") {
+      window.location = "http://localhost:3000/index.html";
+      } 
+  } else {
+    if((window.location.href === "http://localhost:3000/index.html") && (user === null)) {
+      window.location = "http://localhost:3000/sign-in.html";
+      alert("Must Sign In");
+      }
+    console.log("error");
+  }
+});
+
 
 
 $("#signOut").click(function(event) {
@@ -131,10 +153,21 @@ $("#signOut").click(function(event) {
 
     firebase.auth().signOut().then(function() {
 
-    window.location = "http://sawaby.github.io/MyDash/sign-in";
+    window.location = "http://localhost:3000/sign-in.html";
   // Sign-out successful.
 }).catch(function(error) {
   // An error happened.
 });
 });
+
+
+// if((window.location.href === "http://localhost:3000/index.html") && (user === null)) {
+//   window.location = "http://localhost:3000/sign-in.html";
+//   alert("Must Sign In");
+// } else if((window.location.href === "http://localhost:3000/sign-in.html") && (user !== null)) {
+//   window.location = "http://localhost:3000/index.html";
+// } else {
+//   console.log("error");
+// };
+
 
