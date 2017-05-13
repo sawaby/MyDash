@@ -150,7 +150,7 @@ $("#twitter").click(function(event) {
 firebase.auth().onAuthStateChanged(function(user) {
   if(user) {
     console.log(user);
-    $("#module-02").html("<img height='200px' width='200px' id='profileImg' src="+ user.photoURL +">");
+    $("#module-02").html("<img height='185px' width='185px' id='profileImg' src="+ user.photoURL +">");
 
     if (window.location.href === "https://sawaby.github.io/MyDash/sign-in") {
       window.location = "https://sawaby.github.io/MyDash/index";
