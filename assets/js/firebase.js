@@ -26,7 +26,7 @@ $("#google").click(function(event) {
       // The signed-in user info.
       var user = result.user;
 
-      window.location = "http://sawaby.github.io/MyDash/index";
+      window.location = "https://sawaby.github.io/MyDash/index";
       // ...
     }).catch(function(error) {
       // Handle Errors here.
@@ -52,8 +52,6 @@ $("#sign-in").click(function(event) {
   console.log(email);
   console.log(password);
 
-  window.location = "http://sawaby.github.io/MyDash/index";
-
   firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
 
     // Handle Errors here.
@@ -62,6 +60,7 @@ $("#sign-in").click(function(event) {
     // ...
   });
 });
+
 
 $("#sign-in").click(function(event) {
 
@@ -73,8 +72,6 @@ $("#sign-in").click(function(event) {
 
   console.log(email);
   console.log(password);
-
-  window.location = "http://sawaby.github.io/MyDash/index";
 
   firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
   // Handle Errors here.
@@ -102,7 +99,7 @@ $("#facebook").click(function(event) {
   // The signed-in user info.
   var user = result.user;
 
-  window.location = "http://sawaby.github.io/MyDash/index";
+  window.location = "https://sawaby.github.io/MyDash/index";
   
   // ...
 }).catch(function(error) {
@@ -133,7 +130,7 @@ $("#twitter").click(function(event) {
   var secret = result.credential.secret;
   // The signed-in user info.
   var user = result.user;
-  window.location = "http://sawaby.github.io/MyDash/index";  
+  window.location = "https://sawaby.github.io/MyDash/index";  
   // ...
 }).catch(function(error) {
   // Handle Errors here.
@@ -155,12 +152,12 @@ firebase.auth().onAuthStateChanged(function(user) {
     console.log(user);
     $("#module-02").html("<img id='profileImg' src="+ user.photoURL +">");
 
-    if (window.location.href === "http://sawaby.github.io/MyDash/sign-in") {
-      window.location = "http://sawaby.github.io/MyDash/index";
+    if (window.location.href === "https://sawaby.github.io/MyDash/sign-in") {
+      window.location = "https://sawaby.github.io/MyDash/index";
       } 
   } else {
-    if((window.location.href === "http://sawaby.github.io/MyDash/index") && (user === null)) {
-      window.location = "http://sawaby.github.io/MyDash/sign-in";
+    if((window.location.href === "https://sawaby.github.io/MyDash/index") && (user === null)) {
+      window.location = "https://sawaby.github.io/MyDash/sign-in";
       alert("Must Sign In");
       }
   }
@@ -174,7 +171,7 @@ $("#signOut").click(function(event) {
 
     firebase.auth().signOut().then(function() {
 
-    window.location = "http://sawaby.github.io/MyDash/sign-in";
+    window.location = "https://sawaby.github.io/MyDash/sign-in";
   // Sign-out successful.
 }).catch(function(error) {
   // An error happened.
