@@ -150,11 +150,8 @@ $("#twitter").click(function(event) {
 firebase.auth().onAuthStateChanged(function(user) {
   if(user) {
     console.log(user);
-    if(!user.emailVerifed) {
-      $("#module-02").html("<img id='profileImg' src='https://commonfund.nih.gov/sites/default/files/thumbnail_PLACEHOLDER.gif'>");
-    } else {
-      $("#module-02").html("<img id='profileImg' src="+ user.photoURL +">");
-    }
+    $("#module-02").html("<img id='profileImg' src="+ user.photoURL +">");
+    
     if (window.location.href === "http://sawaby.github.io/MyDash/sign-in") {
       window.location = "http://sawaby.github.io/MyDash/index";
       } 
