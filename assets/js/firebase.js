@@ -8,11 +8,8 @@
     };
     firebase.initializeApp(config);
 
-    var signedIn = false;
+    var user = firebase.auth().currentUser;
 
-    var URL = "google.com";
-
-    var auth = firebase.auth().currentUser;
 
     var provider = new firebase.auth.GoogleAuthProvider();
     provider.addScope('https://www.googleapis.com/auth/plus.login');
@@ -43,15 +40,18 @@ $("#google").click(function(event) {
     });
 });
 
+
 $("#sign-in").click(function(event) {
 
   event.preventDefault();
 
-  var email = $("#username").val();
+  var email = $("#email").val();
 
   var password = $("#password").val();
 
-  window.location = "http://sawaby.github.io/MyDash/index";
+  console.log(email);
+  console.log(password);
+
 
   firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
 
@@ -60,11 +60,33 @@ $("#sign-in").click(function(event) {
    var errorMessage = error.message;
     // ...
   });
-
 });
 
-var providerF = new firebase.auth.FacebookAuthProvider();
+$("#sign-in").click(function(event) {
 
+  event.preventDefault();
+
+  var email = $("#email").val();
+
+  var password = $("#password").val();
+
+  console.log(email);
+  console.log(password);
+
+
+  firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
+  // Handle Errors here.
+  var errorCode = error.code;
+  var errorMessage = error.message;
+  // ...
+});
+});
+
+
+
+
+
+var providerF = new firebase.auth.FacebookAuthProvider();
 
 $("#facebook").click(function(event) {
 
@@ -90,6 +112,8 @@ $("#facebook").click(function(event) {
   // The firebase.auth.AuthCredential type that was used.
   var credential = error.credential;
   // ...
+  console.log(errorCode);
+  console.log(errorMessage);
 });
 
 });
@@ -123,6 +147,25 @@ $("#twitter").click(function(event) {
 });
 
 
+firebase.auth().onAuthStateChanged(function(user) {
+  if(user) {
+    console.log(user);
+    if(!user.emailVerifed) {
+      $("#module-02").html("<img id='profileImg' src='https://commonfund.nih.gov/sites/default/files/thumbnail_PLACEHOLDER.gif'>");
+    } else {
+      $("#module-02").html("<img id='profileImg' src="+ user.photoURL +">");
+    }
+    if (window.location.href === "http://sawaby.github.io/MyDash/sign-in") {
+      window.location = "http://sawaby.github.io/MyDash/index";
+      } 
+  } else {
+    if((window.location.href === "http://sawaby.github.io/MyDash/index") && (user === null)) {
+      window.location = "http://sawaby.github.io/MyDash/sign-in";
+      alert("Must Sign In");
+      }
+  }
+});
+
 
 
 $("#signOut").click(function(event) {
@@ -137,4 +180,6 @@ $("#signOut").click(function(event) {
   // An error happened.
 });
 });
+
+
 
