@@ -52,6 +52,7 @@ $("#sign-in").click(function(event) {
   console.log(email);
   console.log(password);
 
+  window.location = "http://sawaby.github.io/MyDash/index";
 
   firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
 
@@ -73,6 +74,7 @@ $("#sign-in").click(function(event) {
   console.log(email);
   console.log(password);
 
+  window.location = "http://sawaby.github.io/MyDash/index";
 
   firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
   // Handle Errors here.
@@ -151,7 +153,7 @@ firebase.auth().onAuthStateChanged(function(user) {
   if(user) {
     console.log(user);
     $("#module-02").html("<img id='profileImg' src="+ user.photoURL +">");
-    
+
     if (window.location.href === "http://sawaby.github.io/MyDash/sign-in") {
       window.location = "http://sawaby.github.io/MyDash/index";
       } 
