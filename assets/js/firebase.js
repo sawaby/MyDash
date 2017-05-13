@@ -26,7 +26,7 @@ $("#google").click(function(event) {
       // The signed-in user info.
       var user = result.user;
 
-      window.location = "http://localhost:3000/index.html";
+      window.location = "http://sawaby.github.io/MyDash/index";
       // ...
     }).catch(function(error) {
       // Handle Errors here.
@@ -41,18 +41,17 @@ $("#google").click(function(event) {
 });
 
 
-var email;
-var password;
-
 $("#sign-in").click(function(event) {
 
   event.preventDefault();
 
-  email = $("#email").val();
+  var email = $("#email").val();
 
-  password = $("#password").val();
+  var password = $("#password").val();
 
-  window.location = "http://localhost:3000/index.html"
+  console.log(email);
+  console.log(password);
+
 
   firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
 
@@ -61,9 +60,27 @@ $("#sign-in").click(function(event) {
    var errorMessage = error.message;
     // ...
   });
-
 });
 
+$("#sign-in").click(function(event) {
+
+  event.preventDefault();
+
+  var email = $("#email").val();
+
+  var password = $("#password").val();
+
+  console.log(email);
+  console.log(password);
+
+
+  firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
+  // Handle Errors here.
+  var errorCode = error.code;
+  var errorMessage = error.message;
+  // ...
+});
+});
 
 
 
@@ -83,7 +100,7 @@ $("#facebook").click(function(event) {
   // The signed-in user info.
   var user = result.user;
 
-  window.location = "http://localhost:3000/index.html";
+  window.location = "http://sawaby.github.io/MyDash/index";
   
   // ...
 }).catch(function(error) {
@@ -133,15 +150,19 @@ $("#twitter").click(function(event) {
 firebase.auth().onAuthStateChanged(function(user) {
   if(user) {
     console.log(user);
-    if (window.location.href === "http://localhost:3000/sign-in.html") {
-      window.location = "http://localhost:3000/index.html";
+    if(!user.emailVerifed) {
+      $("#module-02").html("<img id='profileImg' src='https://commonfund.nih.gov/sites/default/files/thumbnail_PLACEHOLDER.gif'>");
+    } else {
+      $("#module-02").html("<img id='profileImg' src="+ user.photoURL +">");
+    }
+    if (window.location.href === "http://sawaby.github.io/MyDash/sign-in") {
+      window.location = "http://sawaby.github.io/MyDash/index";
       } 
   } else {
-    if((window.location.href === "http://localhost:3000/index.html") && (user === null)) {
-      window.location = "http://localhost:3000/sign-in.html";
+    if((window.location.href === "http://sawaby.github.io/MyDash/index") && (user === null)) {
+      window.location = "http://sawaby.github.io/MyDash/sign-in";
       alert("Must Sign In");
       }
-    console.log("error");
   }
 });
 
@@ -153,21 +174,12 @@ $("#signOut").click(function(event) {
 
     firebase.auth().signOut().then(function() {
 
-    window.location = "http://localhost:3000/sign-in.html";
+    window.location = "http://sawaby.github.io/MyDash/sign-in";
   // Sign-out successful.
 }).catch(function(error) {
   // An error happened.
 });
 });
 
-
-// if((window.location.href === "http://localhost:3000/index.html") && (user === null)) {
-//   window.location = "http://localhost:3000/sign-in.html";
-//   alert("Must Sign In");
-// } else if((window.location.href === "http://localhost:3000/sign-in.html") && (user !== null)) {
-//   window.location = "http://localhost:3000/index.html";
-// } else {
-//   console.log("error");
-// };
 
 
