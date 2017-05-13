@@ -62,10 +62,6 @@ function updateSigninStatus(isSignedIn) {
  */
 function handleAuthClick(event) {
   gapi.auth2.getAuthInstance().signIn();
-   // $("#authorize-button").hide();
-   // console.log("loged in");
- // $("#sms").show();
-
 }
 
 /**
@@ -76,7 +72,7 @@ function handleSignoutClick(event) {
 
 }
 
-// refresh
+// refresh the email slide to get new email if any
 $("#refresh-button").on("click", function(){
    $("#thead").empty();
    $("#tbody").empty();
@@ -84,40 +80,30 @@ $("#refresh-button").on("click", function(){
 });
 
 /**
- * Print all Labels in the authorized user's inbox. If no labels
+ * find all messages(emails) in the authorized user's inbox. If no message
  * are found an appropriate message is printed.
  */
- var ids = [];
+var ids = [];
 function listMessages() {
-  console.log("listMessages");
-
   gapi.client.gmail.users.messages.list({
     'userId': 'me',
     'format': 'full'
   }).then(function(response){
-    console.log("setting the ids");
-
-     var sms = response.result.messages;
-     console.log(JSON.parse(response.body));
+     var sms = response.result.messages; 
+     //get message ids 
      if(sms && sms.length >0){
       for(var j = 0; j<sms.length; j++){
         var MessageList = sms[j];
-        //appendPre(JSON.stringify(MessageList));
-       // appendPre(MessageList.id);
-        //console.log(MessageList.id);
-        //console.log(MessageList.name);
         ids[j] = MessageList.id;
-
       }
+      /**
+      *call getMessage function to get and display emails
+      */
       for(var i = 0; i<5; i++){
-        console.log("loop time out");
         getMessage(ids[i]);
       }
-
-
-     }
+    }
   });
-
 }
 
 /**
@@ -128,70 +114,45 @@ function listMessages() {
  * @param  {String} messageId ID of Message to get.
  * @param  {Function} callback Function to call when the request is complete.
  */
-  var arrayEmail = [];
+var arrayEmail = [];
 function getMessage(id) {
   var promise = {};
-
-  console.log("getMessage");
-    console.log(ids[0]);
   var request = gapi.client.gmail.users.messages.get({
     'userId': 'me',
     'id': id,
     'format': 'full'
   });
   request.execute(function(resp){
-  var msgSnippet = resp.messages;
+    var msgSnippet = resp.messages;
     console.log(resp);
     if(resp){
-       // appendPre(resp.snippet);
-
-        console.log(resp.payload);
-        // console.log(resp.payload.body);
-        //for(var i = 0; i<resp.payload.headers.length; i++){
-         // console.log(resp.payload.headers[i].name);
-          //var tr = $("<tr>");
+      console.log(resp.payload);
+      // get the sender info
       for(var i = 0; i<resp.payload.headers.length; i++){
         if(resp.payload.headers[i].name === "From"){
-          //tr.append('<td><b>'+(resp.payload.headers[i].value).split("<")[0]+'</b></td>');
           console.log((resp.payload.headers[i].value).split("<")[0]);
-          //$("#tbody").append(tr);
           promise.From = (resp.payload.headers[i].value).split("<")[0];
-          // $("#sms").append("_");
         }
       }console.log(promise);
-        //}
+      // get the subject of email
       for(var i = 0; i<resp.payload.headers.length; i++){
         if(resp.payload.headers[i].name === "Subject"){
-         //tr.append('<td><b>'+resp.payload.headers[i].value+'</b></td>');
          promise.Subject = resp.payload.headers[i].value;
-         //$("#tbody").append(promise.Subject);
-
         }
       }console.log(promise);
-        //console.log(arrayEmail);
       arrayEmail.push(promise);
-        console.log(arrayEmail);
-
+      // get the date of email
       for(var i = 0; i<resp.payload.headers.length; i++){
         if(resp.payload.headers[i].name === "Date"){
-
           var str = resp.payload.headers[i].value;
           console.log(resp.payload.headers[i].value);
           var dateModified = (resp.payload.headers[i].value).split("-")[0]
           //var arr = str.substring(5,11);
           console.log(dateModified);
-          // tr.append('<td><b>'+arr+'</b></td>');
-           promise.Date = dateModified;
-           //$("#tbody").append(promise.Date);
-            //promise.Date = arr;
+          promise.Date = dateModified;
         }
       }
-    //var trbody = $("<tr>");
-    //trbody.attr("id", "trbody");
-    promise.body =getBody(resp.payload);
-    //trbody.append(promise.body);
-  //  $("#tbody").append(trbody);
-  //  console.log(trbody);
+      promise.body =getBody(resp.payload);
 
   // run through array of emails and append to
       // corresponding slide in DOM
@@ -205,7 +166,6 @@ function getMessage(id) {
         $('#slide_'+i+"_from").html(from);
         $('#slide_'+i+"_subject").html(subject);
         $('#slide_'+i+"_body").html(body);
-
       }
     }
     else{
