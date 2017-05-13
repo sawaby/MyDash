@@ -240,32 +240,32 @@ email {
     .logo-main {
         font-size: 72px;
     }
-    
+
     .mydash-modules {}
 
     nav {
         color: #00f;
     }
-    
+
     .navbar {
         border-radius: 0;
     }
-    
+
     .col-sm-2.col-xs-4 {
         padding: 5px;
     }
-    
+
     .col-sm-8.col-xs-8 {
         padding: 5px;
     }
-    
+
     #module-01 {
         border: 0 solid #5C8E8B;
         background-color: #5C8E8B;
         height: 185px;
         width: 185px;
     }
-    
+
     #module-02 {
         border: 0 solid #3C551B;
         background-color: #3C551B;
@@ -273,7 +273,7 @@ email {
         width: 185px;
         margin-top: 10px;
     }
-    
+
     #module-03 {
         border: 0 solid #fff;
         background-color: #fff;
@@ -281,28 +281,28 @@ email {
         width: 780px;
         position: relative;
     }
-    
+
     #cityName {
         font-size: 24px;
         color: #fff;
     }
-    
+
     #weatherIcon {
         font-size: 60px;
         margin: auto;
         position: relative;
         color: #fff;
     }
-    
+
     #maxTemp {
         font-size: 24px;
         color: #fff;
     }
-    
+
     #mainContainer {
         margin: 0 auto;
     }
-    
+
     .panel .panel-default {
         margin: 0 auto;
         position: absolute;
@@ -311,38 +311,38 @@ email {
         bottom: 0;
         right: 0;
     }
-    
+
     .form-body {
         background: #fff;
         padding: 20px;
     }
-    
+
     #password-forgot {
         padding-bottom: 30px;
     }
-    
+
     .login-form {
         background: rgba(255, 255, 255, 0.8);
         padding: 20px;
         border-top: 3px solid#3e4043;
     }
-    
+
     .innter-form {
         padding-top: 20px;
     }
-    
+
     .final-login li {
         width: 50%;
     }
-    
+
     .nav-tabs {
         border-bottom: none !important;
     }
-    
+
     .nav-tabs>li {
         color: #222 !important;
     }
-    
+
     .nav-tabs>li.active>a,
     .nav-tabs>li.active>a:hover,
     .nav-tabs>li.active>a:focus {
@@ -351,7 +351,7 @@ email {
         border: none !important;
         border-bottom-color: transparent;
     }
-    
+
     .nav-tabs>li>a {
         margin-right: 2px;
         line-height: 1.428571429;
@@ -359,27 +359,27 @@ email {
         text-transform: uppercase;
         font-size: 16px;
     }
-    
+
     .social-login {
         text-align: center;
         font-size: 12px;
     }
-    
+
     .social-login p {
         margin: 15px 0;
     }
-    
+
     .social-login ul {
         margin: 0;
         padding: 0;
         list-style-type: none;
     }
-    
+
     .social-login ul li {
         width: 33%;
         float: left;
     }
-    
+
     .social-login ul li a {
         font-size: 13px;
         color: #fff;
@@ -387,19 +387,19 @@ email {
         padding: 10px 0;
         display: block;
     }
-    
+
     .social-login ul li:nth-child(1) a {
         background: #3b5998;
     }
-    
+
     .social-login ul li:nth-child(2) a {
         background: #e74c3d;
     }
-    
+
     .social-login ul li:nth-child(3) a {
         background: #3698d9;
     }
-    
+
     .sa-innate-form input[type=text],
     input[type=password],
     input[type=file],
@@ -413,7 +413,7 @@ email {
         width: 100%;
         margin: 8px 0;
     }
-    
+
     .sa-innate-form input[type=submit] {
         border: 1px solid #e64b3b;
         background: #e64b3b;
@@ -422,13 +422,13 @@ email {
         font-size: 14px;
         margin-top: 5px;
     }
-    
+
     .sa-innate-form input[type=submit]:hover {
         border: 1px solid#db3b2b;
         background: #db3b2b;
         color: #fff;
     }
-    
+
     .sa-innate-form button {
         border: 1px solid#e64b3b;
         background: #e64b3b;
@@ -437,33 +437,38 @@ email {
         font-size: 14px;
         margin-top: 5px;
     }
-    
+
     .sa-innate-form button:hover {
         border: 1px solid#db3b2b;
         background: #db3b2b;
         color: #fff;
     }
-    
+
     .sa-innate-form p {
         font-size: 13px;
         padding-top: 10px;
     }
-    
+
     #emailSlideContainer {
         width: 95%;
         margin-top: 28px;
         margin-left: auto;
         margin-right: auto;
     }
-    
+
     .emailSlide {
         height: 270px;
         width: 100%;
     }
-    
+
     .slideBody {
         position: relative;
     }
 
-
-
+    #slide_0,
+    #slide_1,
+    #slide_2,
+    #slide_3,
+    #slide_4{
+      height: auto;
+    }

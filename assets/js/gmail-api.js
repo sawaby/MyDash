@@ -48,7 +48,7 @@ function updateSigninStatus(isSignedIn) {
     authorizeButton.style.display = 'none';
     signoutButton.style.display = 'block';
     listMessages();
-    
+
   } else {
     authorizeButton.style.display = 'block';
     signoutButton.style.display = 'none';
@@ -65,7 +65,7 @@ function handleAuthClick(event) {
    // $("#authorize-button").hide();
    // console.log("loged in");
  // $("#sms").show();
-  
+
 }
 
 /**
@@ -171,7 +171,7 @@ function getMessage(id) {
         //console.log(arrayEmail);
       arrayEmail.push(promise);
         console.log(arrayEmail);
-        
+
       for(var i = 0; i<resp.payload.headers.length; i++){
         if(resp.payload.headers[i].name === "Date"){
 
@@ -206,7 +206,7 @@ function getMessage(id) {
         $('#slide_'+i+"_subject").html(subject);
         $('#slide_'+i+"_body").html(body);
 
-      }  
+      }
     }
     else{
         appendPre('no message found');
