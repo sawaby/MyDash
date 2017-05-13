@@ -1,5 +1,5 @@
 // Client ID and API key from the Developer Console
-console.error("error")
+//console.error("error")
 var CLIENT_ID = '655575217025-1v0e1658o8lsk6gk3vhr5124i0il6cvv.apps.googleusercontent.com';
 var apiKey = 'AIzaSyARv_7mLCF37h5mdIVraL5tBxIziElD99E';
 var SCOPES = 'https://www.googleapis.com/auth/gmail.readonly';
@@ -44,14 +44,16 @@ function updateSigninStatus(isSignedIn) {
   console.log("updateSigninStatus");
   if (isSignedIn) {
     $("#sms").show();
+    $("#refresh-button").show();
     authorizeButton.style.display = 'none';
     signoutButton.style.display = 'block';
     listMessages();
-
+    
   } else {
     authorizeButton.style.display = 'block';
     signoutButton.style.display = 'none';
     $("#sms").hide();
+    $("#refresh-button").hide();
   }
 }
 
@@ -60,8 +62,8 @@ function updateSigninStatus(isSignedIn) {
  */
 function handleAuthClick(event) {
   gapi.auth2.getAuthInstance().signIn();
-   $("#authorize-button").hide();
-    console.log("loged in");
+   // $("#authorize-button").hide();
+   // console.log("loged in");
  // $("#sms").show();
   
 }
@@ -74,6 +76,12 @@ function handleSignoutClick(event) {
 
 }
 
+// refresh
+$("#refresh-button").on("click", function(){
+   $("#thead").empty();
+   $("#tbody").empty();
+    handleClientLoad();
+});
 
 /**
  * Print all Labels in the authorized user's inbox. If no labels
@@ -83,35 +91,34 @@ function handleSignoutClick(event) {
 function listMessages() {
   console.log("listMessages");
 
-    gapi.client.gmail.users.messages.list({
-      'userId': 'me',
-      'format': 'full'
-    }).then(function(response){
-      console.log("setting the ids");
+  gapi.client.gmail.users.messages.list({
+    'userId': 'me',
+    'format': 'full'
+  }).then(function(response){
+    console.log("setting the ids");
 
-       var sms = response.result.messages;
-       console.log(JSON.parse(response.body));
-       if(sms && sms.length >0){
-        for(var j = 0; j<sms.length; j++){
-          var MessageList = sms[j];
-          //appendPre(JSON.stringify(MessageList));
-         // appendPre(MessageList.id);
-          //console.log(MessageList.id);
-          //console.log(MessageList.name);
-          ids[j] = MessageList.id;
+     var sms = response.result.messages;
+     console.log(JSON.parse(response.body));
+     if(sms && sms.length >0){
+      for(var j = 0; j<sms.length; j++){
+        var MessageList = sms[j];
+        //appendPre(JSON.stringify(MessageList));
+       // appendPre(MessageList.id);
+        //console.log(MessageList.id);
+        //console.log(MessageList.name);
+        ids[j] = MessageList.id;
 
-        }
-        for(var i = 0; i<5; i++){
-          console.log("loop time out");
-          getMessage(ids[i]);
-        }
+      }
+      for(var i = 0; i<5; i++){
+        console.log("loop time out");
+        getMessage(ids[i]);
+      }
 
 
-       }
-    });
+     }
+  });
 
 }
-var query = 'from:mnazehat@gmail.com rfc822msgid: is:unread';
 
 /**
  * Get Message with given ID.
@@ -121,8 +128,8 @@ var query = 'from:mnazehat@gmail.com rfc822msgid: is:unread';
  * @param  {String} messageId ID of Message to get.
  * @param  {Function} callback Function to call when the request is complete.
  */
- var arrayEmail = [];
- function getMessage(id) {
+  var arrayEmail = [];
+function getMessage(id) {
   var promise = {};
 
   console.log("getMessage");
@@ -134,74 +141,76 @@ var query = 'from:mnazehat@gmail.com rfc822msgid: is:unread';
   });
   request.execute(function(resp){
   var msgSnippet = resp.messages;
-      console.log(resp);
-      if(resp){
-         // appendPre(resp.snippet);
+    console.log(resp);
+    if(resp){
+       // appendPre(resp.snippet);
 
-          console.log(resp.payload);
-          // console.log(resp.payload.body);
-          for(var i = 0; i<resp.payload.headers.length; i++){
-            console.log(resp.payload.headers[i].name);
-            var tr = $("<tr>");
-            for(var i = 0; i<resp.payload.headers.length; i++){
-              if(resp.payload.headers[i].name === "From"){
-                tr.append('<td><b>'+(resp.payload.headers[i].value).split("<")[0]+'</b></td>');
-                console.log((resp.payload.headers[i].value).split("<")[0]);
-                $("#tbody").append(tr);
-                promise.From = (resp.payload.headers[i].value).split("<")[0];
-                // $("#sms").append("_");
-              }
-            }console.log(promise);
-            for(var i = 0; i<resp.payload.headers.length; i++){
-              if(resp.payload.headers[i].name === "Subject"){
-               tr.append('<td><b>'+resp.payload.headers[i].value+'</b></td>');
-               promise.Subject = resp.payload.headers[i].value;
-               $("#tbody").append(promise.Subject);
+        console.log(resp.payload);
+        // console.log(resp.payload.body);
+        //for(var i = 0; i<resp.payload.headers.length; i++){
+         // console.log(resp.payload.headers[i].name);
+          //var tr = $("<tr>");
+      for(var i = 0; i<resp.payload.headers.length; i++){
+        if(resp.payload.headers[i].name === "From"){
+          //tr.append('<td><b>'+(resp.payload.headers[i].value).split("<")[0]+'</b></td>');
+          console.log((resp.payload.headers[i].value).split("<")[0]);
+          //$("#tbody").append(tr);
+          promise.From = (resp.payload.headers[i].value).split("<")[0];
+          // $("#sms").append("_");
+        }
+      }console.log(promise);
+        //}
+      for(var i = 0; i<resp.payload.headers.length; i++){
+        if(resp.payload.headers[i].name === "Subject"){
+         //tr.append('<td><b>'+resp.payload.headers[i].value+'</b></td>');
+         promise.Subject = resp.payload.headers[i].value;
+         //$("#tbody").append(promise.Subject);
 
-              }
-            }console.log(promise);
-              console.log(arrayEmail);
-              arrayEmail.push(promise);
-              console.log(arrayEmail);
-              // run through array of emails and append to
-              // corresponding slide in DOM
-              for (var i = 0; i < arrayEmail.length; i++) {
-                var date = arrayEmail[i].Date;
-                var from = arrayEmail[i].From;
-                var subject = arrayEmail[i].Subject;
-                var body = arrayEmail[i].body;
-                console.log("Email " +i+ " from "+from);
-                $('#slide_'+i+"_date").html(date);
-                $('#slide_'+i+"_from").html(from);
-                $('#slide_'+i+"_subject").html(subject);
-                $('#slide_'+i+"_body").html(body);
+        }
+      }console.log(promise);
+        //console.log(arrayEmail);
+      arrayEmail.push(promise);
+        console.log(arrayEmail);
+        
+      for(var i = 0; i<resp.payload.headers.length; i++){
+        if(resp.payload.headers[i].name === "Date"){
 
-              }
-            for(var i = 0; i<resp.payload.headers.length; i++){
-              if(resp.payload.headers[i].name === "Date"){
-
-                var str = resp.payload.headers[i].value;
-                // console.log(resp.payload.headers[i].value);
-                var arr = str.substring(5,10);
-                // console.log(arr);
-                 tr.append('<td><b>'+arr+'</b></td>');
-                 promise.Date = arr;
-                 $("#tbody").append(promise.Date);
-                  promise.Date = arr;
-              }
-            }
-            var trbody = $("<tr>");
-            trbody.attr("id", "trbody");
-            promise.body =getBody(resp.payload);
-            trbody.append(promise.body);
-          //  $("#tbody").append(trbody);
-          //  console.log(trbody);
-
-          }
+          var str = resp.payload.headers[i].value;
+          console.log(resp.payload.headers[i].value);
+          var dateModified = (resp.payload.headers[i].value).split("-")[0]
+          //var arr = str.substring(5,11);
+          console.log(dateModified);
+          // tr.append('<td><b>'+arr+'</b></td>');
+           promise.Date = dateModified;
+           //$("#tbody").append(promise.Date);
+            //promise.Date = arr;
+        }
       }
-      else{
-          appendPre('no message found');
-      }
+    //var trbody = $("<tr>");
+    //trbody.attr("id", "trbody");
+    promise.body =getBody(resp.payload);
+    //trbody.append(promise.body);
+  //  $("#tbody").append(trbody);
+  //  console.log(trbody);
+
+  // run through array of emails and append to
+      // corresponding slide in DOM
+      for (var i = 0; i < arrayEmail.length; i++) {
+        var date = arrayEmail[i].Date;
+        var from = arrayEmail[i].From;
+        var subject = arrayEmail[i].Subject;
+        var body = arrayEmail[i].body;
+        console.log("Email " +i+ " from "+from);
+        $('#slide_'+i+"_date").html(date);
+        $('#slide_'+i+"_from").html(from);
+        $('#slide_'+i+"_subject").html(subject);
+        $('#slide_'+i+"_body").html(body);
+
+      }  
+    }
+    else{
+        appendPre('no message found');
+    }
   });
 }
 

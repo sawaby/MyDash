@@ -1,7 +1,18 @@
-    body {
+body {
     /*    background-image: url("lifes-a-beach.jpg");*/
     background-size: cover;
     background-color: #efefef;
+}
+.buttons{
+    /*background-color: brown;*/
+    border-radius: 8px;
+    float: left;
+    margin-bottom: 20px;
+
+}
+.bsize{
+    height: 20px;
+    width: 20px;
 }
 
 .mydash-modules {}
@@ -213,6 +224,7 @@ email {
 }*/
 
 #emailSlideContainer {
+    clear: both;
     width: 95%;
     margin-top: 28px;
     margin-left: auto;
@@ -241,4 +253,5 @@ email {
     #maxTemp {
         font-size: 24px;
     }
+
 
