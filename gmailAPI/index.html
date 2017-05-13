@@ -23,8 +23,9 @@
         width: 20px;
       }
       .buttons{
+        /*background-color: brown;*/
         border-radius: 8px;
-      
+        
       }
     </style>
     <!-- Moment.js Reference -->
@@ -40,7 +41,7 @@
     <p>Gmail API</p>
 
     <!--Add buttons to initiate auth sequence and sign out-->
-    <img id="authorize-button" class = "bsize" style="display: none;" src="authorize.png">
+    <button id="authorize-button" class = "buttons" style="display: none;"><img class="bsize" src="authorize.png"></button>
     <button id="signout-button" class = "buttons" style="display: none;"><img class="bsize" src="sign-out.png"></button>
     <button id="refresh-button" class = "buttons" style="display: none;"><img class="bsize" src="refresh.png"></button>
 

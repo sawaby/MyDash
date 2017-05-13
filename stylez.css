@@ -1,8 +1,237 @@
+
         body {
         background-image: url("lifes-a-beach.jpg");
         background-size: cover;
         background-color: #efefef;
     }
+
+.buttons{
+    /*background-color: brown;*/
+    border-radius: 8px;
+    float: left;
+    margin-bottom: 20px;
+
+}
+.bsize{
+    height: 20px;
+    width: 20px;
+}
+
+.mydash-modules {}
+
+.navbar {
+    border-radius: 0;
+}
+
+.col-sm-2.col-xs-4 {
+    padding: 5px;
+}
+
+.col-sm-8.col-xs-8 {
+    padding: 5px;
+}
+
+#module-01 {
+    border: 0 solid #000;
+    background-color: #999;
+    height: 185px;
+    width: 185px;
+}
+
+#module-02 {
+    border: 0 solid #000;
+    background-color: #8c8c8c;
+    height: 185px;
+    width: 185px;
+    margin-top: 10px;
+}
+
+
+#module-03 {
+    border: 0 solid #000;
+    background-color: #b4b4b4;
+    height: 380px;
+    width: 780px;
+    position: relative;
+}
+
+#cityName {
+    font-size: 24px;
+}
+
+#weatherIcon {
+    font-size: 60px;
+    margin: auto;
+    position: relative;
+}
+
+#maxTemp {
+    font-size: 24px;
+}
+
+#mainContainer {
+    margin: 0 auto;
+}
+
+.panel .panel-default {
+    margin: 0 auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+
+.form-body {
+    background: #fff;
+    padding: 20px;
+}
+
+#password-forgot {
+    padding-bottom: 30px;
+}
+
+.login-form {
+    background: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-top: 3px solid#3e4043;
+}
+
+.innter-form {
+    padding-top: 20px;
+}
+
+.final-login li {
+    width: 50%;
+}
+
+.nav-tabs {
+    border-bottom: none !important;
+}
+
+.nav-tabs>li {
+    color: #222 !important;
+}
+
+.nav-tabs>li.active>a,
+.nav-tabs>li.active>a:hover,
+.nav-tabs>li.active>a:focus {
+    color: #fff;
+    background-color: #d14d42;
+    border: none !important;
+    border-bottom-color: transparent;
+}
+
+.nav-tabs>li>a {
+    margin-right: 2px;
+    line-height: 1.428571429;
+    border: none !important;
+    text-transform: uppercase;
+    font-size: 16px;
+}
+
+.social-login {
+    text-align: center;
+    font-size: 12px;
+}
+
+.social-login p {
+    margin: 15px 0;
+}
+
+.social-login ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+.social-login ul li {
+    width: 33%;
+    float: left;
+}
+
+.social-login ul li a {
+    font-size: 13px;
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 0;
+    display: block;
+}
+
+.social-login ul li:nth-child(1) a {
+    background: #3b5998;
+}
+
+.social-login ul li:nth-child(2) a {
+    background: #e74c3d;
+}
+
+.social-login ul li:nth-child(3) a {
+    background: #3698d9;
+}
+
+.sa-innate-form input[type=text],
+input[type=password],
+input[type=file],
+textarea,
+select,
+email {
+    font-size: 13px;
+    padding: 10px;
+    border: 1px solid#ccc;
+    outline: none;
+    width: 100%;
+    margin: 8px 0;
+}
+
+.sa-innate-form input[type=submit] {
+    border: 1px solid #e64b3b;
+    background: #e64b3b;
+    color: #fff;
+    padding: 10px 25px;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+.sa-innate-form input[type=submit]:hover {
+    border: 1px solid#db3b2b;
+    background: #db3b2b;
+    color: #fff;
+}
+
+.sa-innate-form button {
+    border: 1px solid#e64b3b;
+    background: #e64b3b;
+    color: #fff;
+    padding: 10px 25px;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+.sa-innate-form button:hover {
+    border: 1px solid#db3b2b;
+    background: #db3b2b;
+    color: #fff;
+}
+
+.sa-innate-form p {
+    font-size: 13px;
+    padding-top: 10px;
+}
+
+
+
+/*.border{
+  border : 1px solid black;
+}*/
+
+#emailSlideContainer {
+    clear: both;
+    width: 95%;
+    margin-top: 28px;
+    margin-left: auto;
+    margin-right: auto;
+}
 
     #logo {
         font-family: 'Lobster', cursive;
@@ -235,17 +464,6 @@
     .slideBody {
         position: relative;
     }
-    
-    .slideBodyContentDiv {
-        position: absolute;
-        /* weather icon */
-        #cityName {
-            font-size: 30px;
-        }
-        #weatherIcon {
-            font-size: 60px;
-            margin-bottom: 24px;
-        }
-        #maxTemp {
-            font-size: 24px;
-        }
+
+
+
