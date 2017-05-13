@@ -1,4 +1,17 @@
+#sms{
+/* height: 600px;
+width: 600px;*/
+	border-radius: 10px;
+	background-color: gray;
+	display: none;
 
+}
+td{
+	width: 25%;
+}
+#trbody{
+	width: 100%;
+}
 /*.border{
   border: 1px solid black;
 }*/
@@ -8,4 +21,13 @@
 .border{
   border: 1px solid black;
   height: 800px;
+}
+
+.border{
+	border : 1px solid black;
+}
+
+#emailSlideContainer{
+	height: 100px;
+	width: 100px;
 }
