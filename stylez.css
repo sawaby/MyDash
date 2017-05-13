@@ -1,4 +1,4 @@
-body {
+    body {
     /*    background-image: url("lifes-a-beach.jpg");*/
     background-size: cover;
     background-color: #efefef;
@@ -14,39 +14,49 @@ body {
     padding: 5px;
 }
 
-.col-sm-4.col-xs-8 {
+.col-sm-8.col-xs-8 {
     padding: 5px;
 }
 
-#module-01,
-#module-04,
-#module-07 {
+#module-01 {
     border: 0 solid #000;
     background-color: #999;
     height: 185px;
     width: 185px;
 }
 
-#module-02,
-#module-05,
-#module-08 {
+#module-02 {
     border: 0 solid #000;
     background-color: #8c8c8c;
     height: 185px;
     width: 185px;
+    margin-top: 10px;
 }
 
-#module-03,
-#module-06,
-#module-09 {
+#module-03 {
     border: 0 solid #000;
     background-color: #b4b4b4;
     height: 380px;
-    width: 380px;
+    width: 780px;
+    position: relative;
 }
 
-#module-03{
-  position: relative;
+#cityName {
+    font-size: 24px;
+}
+
+#weatherIcon {
+    font-size: 60px;
+    margin: auto;
+    position: relative;
+}
+
+#maxTemp {
+    font-size: 24px;
+}
+
+#mainContainer {
+    margin: 0 auto;
 }
 
 .panel .panel-default {
@@ -195,41 +205,37 @@ email {
     padding-top: 10px;
 }
 
+
 /*.border{
   border : 1px solid black;
 }*/
 
-#emailSlideContainer{
-  width: 95%;
-  margin-top: 28px;
-  margin-left: auto;
-  margin-right: auto;
+#emailSlideContainer {
+    width: 95%;
+    margin-top: 28px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-.emailSlide{
-  height: 270px;
-  width: 100%;
+.emailSlide {
+    height: 270px;
+    width: 100%;
 }
 
-.slideBody{
-  position: relative;
+.slideBody {
+    position: relative;
 }
 
-.slideBodyContentDiv{
-  position: absolute;
-
-
-/* weather icon */
-
-#cityName {
-    font-size: 30px;
-}
-
-#weatherIcon {
-    font-size: 60px;
-    margin-bottom: 24px;
-}
-
-#maxTemp {
-    font-size: 24px;
-}
+.slideBodyContentDiv {
+    position: absolute;
+    /* weather icon */
+    #cityName {
+        font-size: 30px;
+    }
+    #weatherIcon {
+        font-size: 60px;
+        margin-bottom: 24px;
+    }
+    #maxTemp {
+        font-size: 24px;
+    }
